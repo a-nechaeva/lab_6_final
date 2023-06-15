@@ -15,11 +15,6 @@
             <birthday>22.10.2223</birthday>
             <height>1488</height>
             <hair_color>BLACK</hair_color>
-            <Location>
-                <x>3</x>
-                <y>2.0</y>
-                <z>1.0</z>
-            </Location>
         </Director>
     </Movie>
     <Movie>
@@ -38,11 +33,6 @@
             <birthday>22.10.2223</birthday>
             <height>1488</height>
             <hair_color>BLACK</hair_color>
-            <Location>
-                <x>3</x>
-                <y>2.0</y>
-                <z>1.0</z>
-            </Location>
         </Director>
     </Movie>
     <Movie>
@@ -61,11 +51,6 @@
             <birthday>22.10.2223</birthday>
             <height>1488</height>
             <hair_color>BLACK</hair_color>
-            <Location>
-                <x>3</x>
-                <y>2.0</y>
-                <z>1.0</z>
-            </Location>
         </Director>
     </Movie>
 </MovieCollection>

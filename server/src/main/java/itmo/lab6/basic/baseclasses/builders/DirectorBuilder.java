@@ -1,6 +1,5 @@
 package itmo.lab6.basic.baseclasses.builders;
 
-import itmo.lab6.basic.baseclasses.Location;
 import itmo.lab6.basic.baseclasses.Person;
 import itmo.lab6.basic.baseclasses.builders.annotations.NotEmpty;
 import itmo.lab6.basic.baseclasses.builders.annotations.NotNull;
@@ -21,11 +20,13 @@ public class DirectorBuilder implements Builder {
     private int height;
     @NotNull
     private Color hairColor;
-    @NotNull
-    private Location location;
+ //   @NotNull
+  //  private Location location;
 
     @Override
     public Person build() {
-        return new Person(name, birthday, height, hairColor, location);
+     //   return new Person(name, birthday, height, hairColor, location);
+            return new Person(name, birthday, height, hairColor);
+
     }
 }

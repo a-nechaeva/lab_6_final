@@ -58,7 +58,7 @@ public class Person implements Serializable {
 	/**
 	 * The location of the person.
 	 */
-	private Location location;
+//	private Location location;
 
 	/**
 	 * Returns the name of the person.
@@ -101,9 +101,9 @@ public class Person implements Serializable {
 	 *
 	 * @return The location of the person.
 	 */
-	public Location getLocation() {
-		return location;
-	}
+//	public Location getLocation() {
+	//	return location;
+//	}
 
 	/**
 	 * Creates a new `Person` object with the specified parameters.
@@ -112,16 +112,17 @@ public class Person implements Serializable {
 	 * @param birthday The birthday of the person.
 	 * @param height The height of the person.
 	 * @param hairColor The hair color of the person.
-	 * @param location The location of the person.
+	// * @param location The location of the person.
 	 */
-	public Person(String name, Date birthday, int height, Color hairColor, Location location) {
-		if (name == null || name.isEmpty() || birthday == null || height < 0 || hairColor == null || location == null)
+	//public Person(String name, Date birthday, int height, Color hairColor, Location location) {
+	public Person(String name, Date birthday, int height, Color hairColor) {
+		if (name == null || name.isEmpty() || birthday == null || height < 0 || hairColor == null)
 			throw new IllegalArgumentException("Can't be null or empty sequences.");
 		this.name = name;
 		this.birthday = birthday;
 		this.height = height;
 		this.hairColor = hairColor;
-		this.location = location;
+	//	this.location = location;
 	}
 
 	/**
@@ -136,7 +137,7 @@ public class Person implements Serializable {
 		this.birthday = new Date();
 		this.height = 1;
 		this.hairColor = Randomness.random(Color.class);
-		this.location = new Location();
+		//this.location = new Location();
 
 	}
 
@@ -148,7 +149,7 @@ public class Person implements Serializable {
 		this.birthday = new Date();
 		this.height = 1;
 		this.hairColor = Randomness.random(Color.class);
-		this.location = new Location();
+	//	this.location = new Location();
 	}
 
 	/**
@@ -161,7 +162,8 @@ public class Person implements Serializable {
 	}
 
 	public boolean equals(Person p) {
-		return this.name.equals(p.name) && this.height == p.getHeight() && this.hairColor.equals(p.getHairColor()) && this.location.equals(p.getLocation());
+	//	return this.name.equals(p.name) && this.height == p.getHeight() && this.hairColor.equals(p.getHairColor()) && this.location.equals(p.getLocation());
+		return this.name.equals(p.name) && this.height == p.getHeight() && this.hairColor.equals(p.getHairColor());
 	}
 
 	/**
@@ -194,16 +196,18 @@ public class Person implements Serializable {
 	/**
 	 * Sets the location of the person.
 	 *
-	 * @param location The location of the person.
+//	 * @param location The location of the person.
 	 */
-	public void setLocation(Location location) {
+/*	public void setLocation(Location location) {
 		this.location = location;
 	}
+
+ */
 
 	public String toString() {
 		String birthday = new java.text.SimpleDateFormat("dd.MM.yyyy").format(this.birthday);
 		return prcr + "Director's name: " + whcr + name
-			 + prcr + ",\nDirector's location: " + whcr + location
+			// + prcr + ",\nDirector's location: " + whcr + location
 			 + prcr + ",\nDirector's height: " + whcr + height
 			 + prcr + ",\nDirector's hair color: " + whcr + hairColor
 			 + prcr + ",\nDirector's birth date: " + whcr + birthday + "\n";

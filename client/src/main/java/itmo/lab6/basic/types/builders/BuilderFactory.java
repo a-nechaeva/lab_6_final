@@ -6,7 +6,7 @@ public class BuilderFactory {
             case "coordinates" -> new CoordinatesBuilder();
             case "date" -> new DateBuilder();
             case "person" -> new DirectorBuilder();
-            case "location" -> new LocationBuilder();
+           // case "location" -> new LocationBuilder();
             case "movie" -> new MovieBuilder();
             default -> null;
         };
