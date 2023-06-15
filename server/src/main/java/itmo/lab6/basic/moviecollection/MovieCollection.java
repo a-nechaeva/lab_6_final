@@ -42,7 +42,7 @@ public class MovieCollection extends MHMap<Long, Movie> {
      */
     public boolean removeGreater(Long key) {
         return Arrays.stream(this.values())
-                .filter(movie -> movie.getOscarsInt() > key)
+                .filter(movie -> movie.getNumberOfParticipants() > key)
                 .map(movie -> this.removeByKey(movie.getId()))
                 .reduce(false, (a, b) -> a || b);
     }
@@ -108,7 +108,7 @@ public class MovieCollection extends MHMap<Long, Movie> {
      * @return true if the elements are swapped, false otherwise
      */
     public boolean replaceLower(Long key, Movie movie) {
-        if (movie.oscarsCount() < this.get(key).oscarsCount()) {
+        if (movie.getNumberOfParticipants() < this.get(key).getNumberOfParticipants()) {
             this.update(key, movie);
             return true;
         }

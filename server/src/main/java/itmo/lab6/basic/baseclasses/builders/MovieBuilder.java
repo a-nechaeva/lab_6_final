@@ -25,19 +25,16 @@ public class MovieBuilder implements Builder {
     private java.time.ZonedDateTime creationDate;
 
     @Value(min = 0)
-    private long oscarsCount;
+    private int numberOfParticipants;
 
     @NotNull
     private MusicGenre genre;
-  /*  @NotNull
-    private MpaaRating mpaaRating;
 
-   */
     @NotNull
     private Studio studio;
 
     @Override
     public Movie build() {
-        return new Movie(id, name, coordinates, creationDate, oscarsCount, genre, studio);
+        return new Movie(id, name, coordinates, creationDate, numberOfParticipants, genre, studio);
     }
 }

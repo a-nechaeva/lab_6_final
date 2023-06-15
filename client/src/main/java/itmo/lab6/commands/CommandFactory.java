@@ -1,18 +1,13 @@
 package itmo.lab6.commands;
 
-import itmo.lab6.basic.auxiliary.Convertible;
 import itmo.lab6.basic.baseclasses.Movie;
-import itmo.lab6.basic.baseenums.MpaaRating;
 import itmo.lab6.basic.utils.files.FileUtils;
 import itmo.lab6.basic.utils.files.ScriptExecutor;
 import itmo.lab6.basic.utils.parser.ArgumentParser;
 import itmo.lab6.basic.utils.parser.UserInputParser;
 import itmo.lab6.basic.utils.parser.exceptions.ObjectParsingException;
-import itmo.lab6.basic.utils.terminal.Colors;
-import itmo.lab6.connection.Connector;
 
 import java.io.File;
-import java.net.InetAddress;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;

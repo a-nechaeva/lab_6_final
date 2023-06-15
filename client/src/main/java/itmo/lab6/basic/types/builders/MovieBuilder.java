@@ -4,7 +4,6 @@ import itmo.lab6.basic.baseclasses.Coordinates;
 import itmo.lab6.basic.baseclasses.Movie;
 import itmo.lab6.basic.baseclasses.Studio;
 import itmo.lab6.basic.baseenums.MusicGenre;
-import itmo.lab6.basic.baseenums.MpaaRating;
 import itmo.lab6.basic.types.builders.annotations.Generated;
 import itmo.lab6.basic.types.builders.annotations.NotNull;
 import itmo.lab6.basic.types.builders.annotations.Value;
@@ -26,7 +25,7 @@ public class MovieBuilder implements Builder {
     private ZonedDateTime creationDate;
 
     @Value(min = 0)
-    private long oscarsCount;
+    private int numberOfParticipants;
 
     @NotNull
     private MusicGenre genre;
@@ -39,6 +38,6 @@ public class MovieBuilder implements Builder {
 
     @Override
     public Movie build() {
-        return new Movie(id, name, coordinates, creationDate, oscarsCount, genre, studio);
+        return new Movie(id, name, coordinates, creationDate, numberOfParticipants, genre, studio);
     }
 }
