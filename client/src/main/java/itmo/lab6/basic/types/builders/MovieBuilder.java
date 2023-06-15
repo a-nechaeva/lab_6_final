@@ -2,7 +2,7 @@ package itmo.lab6.basic.types.builders;
 
 import itmo.lab6.basic.baseclasses.Coordinates;
 import itmo.lab6.basic.baseclasses.Movie;
-import itmo.lab6.basic.baseclasses.Person;
+import itmo.lab6.basic.baseclasses.Studio;
 import itmo.lab6.basic.baseenums.MusicGenre;
 import itmo.lab6.basic.baseenums.MpaaRating;
 import itmo.lab6.basic.types.builders.annotations.Generated;
@@ -33,10 +33,10 @@ public class MovieBuilder implements Builder {
     @NotNull
     private MpaaRating mpaaRating;
     @NotNull
-    private Person director;
+    private Studio studio;
 
     @Override
     public Movie build() {
-        return new Movie(id, name, coordinates, creationDate, oscarsCount, genre, mpaaRating, director);
+        return new Movie(id, name, coordinates, creationDate, oscarsCount, genre, mpaaRating, studio);
     }
 }

@@ -10,9 +10,8 @@
         <oscars_count>300</oscars_count>
         <genre>RAP</genre>
         <mpaa_rating>PG</mpaa_rating>
-        <Director>
-            <name>фвыа</name>
-        </Director>
+        <director>Studio's name: фвыа,
+</director>
     </Movie>
     <Movie>
         <id>6</id>
@@ -25,9 +24,8 @@
         <oscars_count>400</oscars_count>
         <genre>RAP</genre>
         <mpaa_rating>PG</mpaa_rating>
-        <Director>
-            <name>фвыа</name>
-        </Director>
+        <director>Studio's name: фвыа,
+</director>
     </Movie>
     <Movie>
         <id>7</id>
@@ -40,8 +38,7 @@
         <oscars_count>700</oscars_count>
         <genre>RAP</genre>
         <mpaa_rating>PG</mpaa_rating>
-        <Director>
-            <name>фвыа</name>
-        </Director>
+        <director>Studio's name: фвыа,
+</director>
     </Movie>
 </MovieCollection>

@@ -1,14 +1,11 @@
 package itmo.lab6.basic.baseclasses;
 
-import itmo.lab6.basic.auxiliary.Randomness;
-import itmo.lab6.basic.baseenums.Color;
 
 import java.io.Serial;
 import java.io.Serializable;
-import java.util.Date;
 
 /**
- * The `Person` class implements `Serializable` interface and is used to store information about a person.
+ * The `Studio` class implements `Serializable` interface and is used to store information about a person.
  * It has various instance variables to store the person's name, birthday, height, hair color, and location.
  * The class provides constructors with different parameters and getters and setters for all the instance variables.
  * It also provides an implementation of the `toString()` method for convenient output.
@@ -17,7 +14,7 @@ import java.util.Date;
  * @version 1.0
  * @since 1999
  */
-public class Person implements Serializable {
+public class Studio implements Serializable {
 	@Serial
 	private static final long serialVersionUID = 6529685098267757690L;
 	/**
@@ -36,14 +33,14 @@ public class Person implements Serializable {
 	public static final String prcr = "\u001B[35m";
 
 	/**
-	 * The name of the person.
+	 * The name of the studio.
 	 */
 	private String name;
 
 	/**
-	 * Returns the name of the person.
+	 * Returns the name of the studio.
 	 *
-	 * @return The name of the person.
+	 * @return The name of the studio.
 	 */
 	public String getName() {
 		return name;
@@ -51,12 +48,12 @@ public class Person implements Serializable {
 
 
 	/**
-	 * Creates a new `Person` object with the specified parameters.
+	 * Creates a new `Studio` object with the specified parameters.
 	 *
-	 * @param name The name of the person.
+	 * @param name The name of the studio.
 	 */
 
-	public Person(String name) {
+	public Studio(String name) {
 		if (name == null || name.isEmpty())
 			throw new IllegalArgumentException("Can't be null or empty sequences.");
 		this.name = name;
@@ -65,28 +62,28 @@ public class Person implements Serializable {
 
 
 	/**
-	 * Creates a new `Person` object with standard parameters.
+	 * Creates a new `Studio` object with standard parameters.
 	 */
-	public Person() {
-		this.name = "Quentin Tarantino";
+	public Studio() {
+		this.name = "Roses";
 	}
 
 	/**
-	 * Sets the name of the person.
+	 * Sets the name of the studio.
 	 *
-	 * @param name The name of the person.
+	 * @param name The name of the studio.
 	 */
 	public void setName(String name) {
 		this.name = name;
 	}
 
-	public boolean equals(Person p) {
+	public boolean equals(Studio p) {
 		return this.name.equals(p.name);
 	}
 
 
 
 	public String toString() {
-		return prcr + "Director's name: " + whcr + name;
+		return prcr + "Studio's name: " + whcr + name;
 	}
 }

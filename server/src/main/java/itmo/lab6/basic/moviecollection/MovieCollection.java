@@ -1,7 +1,7 @@
 package itmo.lab6.basic.moviecollection;
 
 import itmo.lab6.basic.baseclasses.Movie;
-import itmo.lab6.basic.baseclasses.Person;
+import itmo.lab6.basic.baseclasses.Studio;
 import itmo.lab6.basic.baseenums.MpaaRating;
 
 import java.util.Arrays;
@@ -29,7 +29,7 @@ public class MovieCollection extends MHMap<Long, Movie> {
      * prints the collection elements and its contents to the console
      *
      * @see Movie
-     * @see Person
+     * @see Studio
      */
     public String show() {
         return Arrays.stream(this.values()).map(Movie::toString).collect(Collectors.joining("\n"));

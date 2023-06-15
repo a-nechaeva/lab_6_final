@@ -1,12 +1,9 @@
 package itmo.lab6.basic.baseclasses;
 
-import itmo.lab6.basic.auxiliary.Randomness;
 import itmo.lab6.basic.baseclasses.builders.annotations.Generated;
-import itmo.lab6.basic.baseenums.Color;
 
 import java.io.Serial;
 import java.io.Serializable;
-import java.util.Date;
 
 /**
  * The `Person` class implements `Serializable` interface and is used to store information about a person.
@@ -18,7 +15,7 @@ import java.util.Date;
  * @version 1.0
  * @since 1999
  */
-public class Person implements Serializable {
+public class Studio implements Serializable {
     @Serial
     @Generated
     private static final long serialVersionUID = 6529685098267757690L;
@@ -34,7 +31,7 @@ public class Person implements Serializable {
      *
      * @param name The name of the person.
      */
-    public Person(String name) {
+    public Studio(String name) {
         if (name == null || name.isEmpty()) throw new IllegalArgumentException("Can't be null or empty sequences.");
         this.name = name;
     }
@@ -42,7 +39,7 @@ public class Person implements Serializable {
     /**
      * Creates a new `Person` object with standard parameters.
      */
-    public Person() {
+    public Studio() {
         this.name = "Quentin Tarantino";
     }
 
@@ -65,12 +62,12 @@ public class Person implements Serializable {
     }
 
 
-    public boolean equals(Person p) {
+    public boolean equals(Studio p) {
         return this.name.equals(p.name);
     }
 
     @Override
     public String toString() {
-        return "Director's name: " + name + ",\n";
+        return "Studio's name: " + name + ",\n";
     }
 }

@@ -5,7 +5,7 @@ public class BuilderFactory {
         return switch (className.toLowerCase()) {
             case "coordinates" -> new CoordinatesBuilder();
             case "date" -> new DateBuilder();
-            case "person" -> new DirectorBuilder();
+            case "person" -> new StudioBuilder();
            // case "location" -> new LocationBuilder();
             case "movie" -> new MovieBuilder();
             default -> null;

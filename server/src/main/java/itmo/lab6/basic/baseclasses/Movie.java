@@ -69,9 +69,9 @@ public class Movie implements Comparable<Movie>, Serializable {
     /**
      * The director of the movie. The field can't be null.
      *
-     * @see Person
+     * @see Studio
      */
-    private Person director;
+    private Studio director;
 
     /**
      * Constructor to create a movie with the given parameters.
@@ -83,12 +83,12 @@ public class Movie implements Comparable<Movie>, Serializable {
      * @param genre       the genre of the movie
      * @param mpaaRating  the MPAA rating of the movie
      * @param director    the director of the movie
-     * @see Person
+     * @see Studio
      * @see Coordinates
      * @see MusicGenre
      * @see MpaaRating
      */
-    public Movie(String name, Coordinates coordinates, Long oscarsCount, MusicGenre genre, MpaaRating mpaaRating, Person director) {
+    public Movie(String name, Coordinates coordinates, Long oscarsCount, MusicGenre genre, MpaaRating mpaaRating, Studio director) {
         if (name == null || name.isEmpty() || coordinates == null || oscarsCount == null || oscarsCount < 0 || genre == null || mpaaRating == null || director == null)
             throw new IllegalArgumentException("The fields can't be null or empty sequences.");
         this.id = nextId++;
@@ -113,9 +113,9 @@ public class Movie implements Comparable<Movie>, Serializable {
      * @param genre        the genre of the movie
      * @param mpaaRating   the MPAA rating of the movie
      * @param director     the director of the movie
-     * @see Movie#Movie(String name, Coordinates coordinates, Long oscarsCount, MusicGenre genre, MpaaRating mpaaRating, Person director)
+     * @see Movie#Movie(String name, Coordinates coordinates, Long oscarsCount, MusicGenre genre, MpaaRating mpaaRating, Studio director)
      */
-    public Movie(Long id, String name, Coordinates coordinates, java.time.ZonedDateTime creationDate, Long oscarsCount, MusicGenre genre, MpaaRating mpaaRating, Person director) {
+    public Movie(Long id, String name, Coordinates coordinates, java.time.ZonedDateTime creationDate, Long oscarsCount, MusicGenre genre, MpaaRating mpaaRating, Studio director) {
         if (name == null || name.isEmpty() || coordinates == null || oscarsCount == null || oscarsCount < 0 || genre == null || mpaaRating == null || director == null)
             throw new IllegalArgumentException("The fields can't be null or empty sequences.");
         nextId++;
@@ -222,9 +222,9 @@ public class Movie implements Comparable<Movie>, Serializable {
     /**
      * @return the director of the movie
      * @see Movie#director
-     * @see Person
+     * @see Studio
      */
-    public Person getDirector() {
+    public Studio getDirector() {
         return director;
     }
 
@@ -232,9 +232,9 @@ public class Movie implements Comparable<Movie>, Serializable {
      * Used to set the director of the movie.
      *
      * @see Movie#director
-     * @see Person
+     * @see Studio
      */
-    public void setDirector(Person director) {
+    public void setDirector(Studio director) {
         this.director = director;
     }
 
