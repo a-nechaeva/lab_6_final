@@ -73,14 +73,14 @@ public class XmlWriter extends XmlAction {
      * @param object Object to write
      */
     private void writeObject(Object object) throws RuntimeException {
-        if (!object.getClass().getSimpleName().equalsIgnoreCase("person"))
+        if (!object.getClass().getSimpleName().equalsIgnoreCase("studio"))
             writeLine(indentString() + "<" + object.getClass().getSimpleName() + ">");
-        else writeLine(indentString() + "<Director>");
+        else writeLine(indentString() + "<Studio>");
         indentLevel++;
         Arrays.stream(object.getClass().getDeclaredFields()).filter(a -> !a.isAnnotationPresent(Generated.class)).forEach(field -> {
             field.setAccessible(true);
             try {
-                if (List.of("location", "coordinates", "movie", "person").contains(field.getType().getSimpleName().toLowerCase())) {
+                if (List.of("location", "coordinates", "movie", "studio").contains(field.getType().getSimpleName().toLowerCase())) {
                     writeObject(field.get(object));
                 } else if (field.getType().getSimpleName().equals("Date")) {
                     Date date = (Date) field.get(object);
@@ -94,9 +94,9 @@ public class XmlWriter extends XmlAction {
             }
         });
         --indentLevel;
-        if (!object.getClass().getSimpleName().equalsIgnoreCase("person"))
+        if (!object.getClass().getSimpleName().equalsIgnoreCase("studio"))
             writeLine(indentString() + "</" + object.getClass().getSimpleName() + ">");
-        else writeLine(indentString() + "</Director>");
+        else writeLine(indentString() + "</Studio>");
     }
 
     /**
