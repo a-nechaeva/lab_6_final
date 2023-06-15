@@ -5,7 +5,7 @@ import itmo.lab6.server.UdpServer;
 import itmo.lab6.server.response.Response;
 import itmo.lab6.server.response.ResponseType;
 
-public final class RemoveByMpaaRating implements Action {
+/*public final class RemoveByMpaaRating implements Action {
     private final MpaaRating mpaaRating;
 
     public RemoveByMpaaRating(MpaaRating mpaaRating) {
@@ -18,3 +18,5 @@ public final class RemoveByMpaaRating implements Action {
         return new Response("No such element", ResponseType.SUCCESS);
     }
 }
+
+ */

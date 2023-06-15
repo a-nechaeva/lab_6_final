@@ -77,7 +77,7 @@ public final class CommandFactory {
                     yield null;
                 }
             }
-            case REMOVE_ALL_BY_MPAA_RATING -> {
+          /*  case REMOVE_ALL_BY_MPAA_RATING -> {
                 if (args.length < 1) {
                     System.err.println("Not enough arguments for command " + type.name());
                     yield null;
@@ -93,7 +93,7 @@ public final class CommandFactory {
                     System.err.println("Invalid argument for command " + type.name());
                     yield null;
                 }
-            }
+            } */
             case INSERT, UPDATE, REPLACE_IF_LOWER -> {
                 Movie movie = null;
                 if (args.length == 1) {

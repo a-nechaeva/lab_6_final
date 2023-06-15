@@ -2,9 +2,9 @@
 <!DOCTYPE log SYSTEM "logger.dtd">
 <log>
 <record>
-  <date>2023-06-15T22:51:33.142830400Z</date>
-  <millis>1686869493142</millis>
-  <nanos>830400</nanos>
+  <date>2023-06-15T23:09:20.427092500Z</date>
+  <millis>1686870560427</millis>
+  <nanos>92500</nanos>
   <sequence>0</sequence>
   <logger>itmo.lab6.server.ServerLogger</logger>
   <level>INFO</level>
@@ -14,27 +14,75 @@
   <message>Starting server on port 1611</message>
 </record>
 <record>
-  <date>2023-06-15T22:51:41.212286300Z</date>
-  <millis>1686869501212</millis>
-  <nanos>286300</nanos>
+  <date>2023-06-15T23:09:30.328023200Z</date>
+  <millis>1686870570328</millis>
+  <nanos>23200</nanos>
   <sequence>1</sequence>
   <logger>itmo.lab6.server.ServerLogger</logger>
   <level>INFO</level>
   <class>itmo.lab6.commands.CommandHandler</class>
   <method>handlePacket</method>
   <thread>1</thread>
-  <message>Received command INFO from /192.168.98.116:62293</message>
+  <message>Received command INFO from /192.168.98.116:58613</message>
 </record>
 <record>
-  <date>2023-06-15T22:51:41.218843Z</date>
-  <millis>1686869501218</millis>
-  <nanos>843000</nanos>
+  <date>2023-06-15T23:09:30.335569300Z</date>
+  <millis>1686870570335</millis>
+  <nanos>569300</nanos>
   <sequence>2</sequence>
   <logger>itmo.lab6.server.ServerLogger</logger>
   <level>INFO</level>
   <class>itmo.lab6.commands.CommandHandler</class>
   <method>handlePacket</method>
   <thread>1</thread>
-  <message>Sending 1 chunks to /192.168.98.116:62293</message>
+  <message>Sending 1 chunks to /192.168.98.116:58613</message>
+</record>
+<record>
+  <date>2023-06-15T23:09:33.815920200Z</date>
+  <millis>1686870573815</millis>
+  <nanos>920200</nanos>
+  <sequence>3</sequence>
+  <logger>itmo.lab6.server.ServerLogger</logger>
+  <level>INFO</level>
+  <class>itmo.lab6.commands.CommandHandler</class>
+  <method>handlePacket</method>
+  <thread>1</thread>
+  <message>Received command SHOW from /192.168.98.116:58613</message>
+</record>
+<record>
+  <date>2023-06-15T23:09:33.829839900Z</date>
+  <millis>1686870573829</millis>
+  <nanos>839900</nanos>
+  <sequence>4</sequence>
+  <logger>itmo.lab6.server.ServerLogger</logger>
+  <level>INFO</level>
+  <class>itmo.lab6.commands.CommandHandler</class>
+  <method>handlePacket</method>
+  <thread>1</thread>
+  <message>Sending 1 chunks to /192.168.98.116:58613</message>
+</record>
+<record>
+  <date>2023-06-15T23:09:44.235908700Z</date>
+  <millis>1686870584235</millis>
+  <nanos>908700</nanos>
+  <sequence>5</sequence>
+  <logger>itmo.lab6.server.ServerLogger</logger>
+  <level>INFO</level>
+  <class>itmo.lab6.commands.CommandHandler</class>
+  <method>handlePacket</method>
+  <thread>1</thread>
+  <message>Received command PRINT_DESCENDING from /192.168.98.116:58613</message>
+</record>
+<record>
+  <date>2023-06-15T23:09:44.240919800Z</date>
+  <millis>1686870584240</millis>
+  <nanos>919800</nanos>
+  <sequence>6</sequence>
+  <logger>itmo.lab6.server.ServerLogger</logger>
+  <level>INFO</level>
+  <class>itmo.lab6.commands.CommandHandler</class>
+  <method>handlePacket</method>
+  <thread>1</thread>
+  <message>Sending 1 chunks to /192.168.98.116:58613</message>
 </record>
 </log>

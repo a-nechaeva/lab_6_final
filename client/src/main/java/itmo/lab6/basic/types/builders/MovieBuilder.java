@@ -30,13 +30,15 @@ public class MovieBuilder implements Builder {
 
     @NotNull
     private MusicGenre genre;
-    @NotNull
+ /*   @NotNull
     private MpaaRating mpaaRating;
+
+  */
     @NotNull
     private Studio studio;
 
     @Override
     public Movie build() {
-        return new Movie(id, name, coordinates, creationDate, oscarsCount, genre, mpaaRating, studio);
+        return new Movie(id, name, coordinates, creationDate, oscarsCount, genre, studio);
     }
 }

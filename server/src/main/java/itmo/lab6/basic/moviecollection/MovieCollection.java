@@ -149,11 +149,13 @@ public class MovieCollection extends MHMap<Long, Movie> {
      *
      * @param rating the rating to check
      * @return true if the operation was successful, false otherwise
-     * @see MpaaRating
+    // * @see MpaaRating
      */
-    public boolean removeByRating(MpaaRating rating) {
+  /*  public boolean removeByRating(MpaaRating rating) {
         Arrays.stream(this.values()).filter(movie -> movie.getRating() == rating).forEach(this::removeByValue);
         return true;
     }
+
+   */
 
 }

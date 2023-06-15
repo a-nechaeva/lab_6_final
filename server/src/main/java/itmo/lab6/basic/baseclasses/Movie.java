@@ -62,10 +62,12 @@ public class Movie implements Comparable<Movie>, Serializable {
     /**
      * The MPAA rating of the movie.
      *
-     * @see MpaaRating
+   //  * @see MpaaRating
      */
-    private MpaaRating mpaaRating;
+  /*  private MpaaRating mpaaRating;
 
+
+   */
     /**
      * The director of the movie. The field can't be null.
      *
@@ -81,22 +83,22 @@ public class Movie implements Comparable<Movie>, Serializable {
      * @param coordinates the coordinates of the movie
      * @param oscarsCount the number of oscars won by the movie
      * @param genre       the genre of the movie
-     * @param mpaaRating  the MPAA rating of the movie
+   //  * @param mpaaRating  the MPAA rating of the movie
      * @param studio    the director of the movie
      * @see Studio
      * @see Coordinates
      * @see MusicGenre
-     * @see MpaaRating
+   //  * @see MpaaRating
      */
-    public Movie(String name, Coordinates coordinates, Long oscarsCount, MusicGenre genre, MpaaRating mpaaRating, Studio studio) {
-        if (name == null || name.isEmpty() || coordinates == null || oscarsCount == null || oscarsCount < 0 || genre == null || mpaaRating == null || studio == null)
+    public Movie(String name, Coordinates coordinates, Long oscarsCount, MusicGenre genre, Studio studio) {
+        if (name == null || name.isEmpty() || coordinates == null || oscarsCount == null || oscarsCount < 0 || genre == null  || studio == null)
             throw new IllegalArgumentException("The fields can't be null or empty sequences.");
         this.id = nextId++;
         this.name = name;
         this.coordinates = coordinates;
         this.oscarsCount = oscarsCount;
         this.genre = genre;
-        this.mpaaRating = mpaaRating;
+      //  this.mpaaRating = mpaaRating;
         this.studio = studio;
         this.creationDate = java.time.ZonedDateTime.now();
     }
@@ -111,12 +113,12 @@ public class Movie implements Comparable<Movie>, Serializable {
      * @param creationDate the creation date of the movie
      * @param oscarsCount  the number of Oscars won by the movie
      * @param genre        the genre of the movie
-     * @param mpaaRating   the MPAA rating of the movie
+   //  * @param mpaaRating   the MPAA rating of the movie
      * @param studio     the director of the movie
-     * @see Movie#Movie(String name, Coordinates coordinates, Long oscarsCount, MusicGenre genre, MpaaRating mpaaRating, Studio studio)
+     * @see Movie#Movie(String name, Coordinates coordinates, Long oscarsCount, MusicGenre genre, Studio studio)
      */
-    public Movie(Long id, String name, Coordinates coordinates, java.time.ZonedDateTime creationDate, Long oscarsCount, MusicGenre genre, MpaaRating mpaaRating, Studio studio) {
-        if (name == null || name.isEmpty() || coordinates == null || oscarsCount == null || oscarsCount < 0 || genre == null || mpaaRating == null || studio == null)
+    public Movie(Long id, String name, Coordinates coordinates, java.time.ZonedDateTime creationDate, Long oscarsCount, MusicGenre genre, Studio studio) {
+        if (name == null || name.isEmpty() || coordinates == null || oscarsCount == null || oscarsCount < 0 || genre == null  || studio == null)
             throw new IllegalArgumentException("The fields can't be null or empty sequences.");
         nextId++;
         this.id = id;
@@ -125,7 +127,7 @@ public class Movie implements Comparable<Movie>, Serializable {
         this.creationDate = creationDate;
         this.oscarsCount = oscarsCount;
         this.genre = genre;
-        this.mpaaRating = mpaaRating;
+     //   this.mpaaRating = mpaaRating;
         this.studio = studio;
     }
 
@@ -241,7 +243,7 @@ public class Movie implements Comparable<Movie>, Serializable {
     /**
      * @return the amount of Oscars won by the movie.
      * @see Movie#oscarsCount()
-     * @see MpaaRating
+   //  * @see MpaaRating
      * @deprecated use {@link Movie#getOscarsInt()} or {@link Movie#oscarsCount()} instead
      */
     @Deprecated
@@ -262,7 +264,7 @@ public class Movie implements Comparable<Movie>, Serializable {
     /**
      * @return the amount of Oscars won by the movie as an integer.
      * @see Movie#oscarsCount()
-     * @see MpaaRating
+   //  * @see MpaaRating
      */
     public int getOscarsInt() {
         return (int) oscarsCount;
@@ -270,21 +272,25 @@ public class Movie implements Comparable<Movie>, Serializable {
 
     /**
      * @return MpaaRating of the movie
-     * @see MpaaRating
+  //   * @see MpaaRating
      */
-    public MpaaRating getRating() {
+ /*   public MpaaRating getRating() {
         return mpaaRating;
     }
+
+  */
 
     /**
      * Used to set the MPAA rating of the movie.
      *
-     * @see Movie#mpaaRating
+  //   * @see Movie#mpaaRating
      * @see MpaaRating
      */
-    public void setMpaaRating(MpaaRating mpaaRating) {
+  /*  public void setMpaaRating(MpaaRating mpaaRating) {
         this.mpaaRating = mpaaRating;
     }
+
+   */
 
 //	/**
 //	 * Used to compare ids.
@@ -294,7 +300,7 @@ public class Movie implements Comparable<Movie>, Serializable {
 //	}
 
     public Object[] getFields() {
-        return new Object[]{id, name, coordinates, creationDate, oscarsCount, genre, mpaaRating, studio};
+        return new Object[]{id, name, coordinates, creationDate, oscarsCount, genre, studio};
     }
 
     /**
@@ -309,7 +315,7 @@ public class Movie implements Comparable<Movie>, Serializable {
      * Used see if two movies are set on the same position.
      */
     public boolean equals(Movie movie) {
-        return coordinates.equals(movie.getCoordinates()) && name.equals(movie.getName()) && oscarsCount == movie.oscarsCount() && genre == movie.getGenre() && mpaaRating == movie.getRating() && studio.equals(movie.getStudio());
+        return coordinates.equals(movie.getCoordinates()) && name.equals(movie.getName()) && oscarsCount == movie.oscarsCount() && genre == movie.getGenre() &&  studio.equals(movie.getStudio());
     }
 
     @Override
@@ -320,7 +326,7 @@ public class Movie implements Comparable<Movie>, Serializable {
                 + "Creation Date: " + creationDate.format(DateTimeFormatter.ofPattern("dd.MM.yyyy")) + ",\n"
                 + "Number of Oscars: " + oscarsCount + ",\n"
                 + "Genre: " + genre + ",\n"
-                + "Mpaa rating: " + mpaaRating + ",\n"
+             //   + "Mpaa rating: " + mpaaRating + ",\n"
                 + studio.toString();
     }
 }
