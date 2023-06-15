@@ -12,9 +12,6 @@
         <mpaa_rating>PG</mpaa_rating>
         <Director>
             <name>фвыа</name>
-            <birthday>22.10.2223</birthday>
-            <height>1488</height>
-            <hair_color>BLACK</hair_color>
         </Director>
     </Movie>
     <Movie>
@@ -30,9 +27,6 @@
         <mpaa_rating>PG</mpaa_rating>
         <Director>
             <name>фвыа</name>
-            <birthday>22.10.2223</birthday>
-            <height>1488</height>
-            <hair_color>BLACK</hair_color>
         </Director>
     </Movie>
     <Movie>
@@ -48,9 +42,6 @@
         <mpaa_rating>PG</mpaa_rating>
         <Director>
             <name>фвыа</name>
-            <birthday>22.10.2223</birthday>
-            <height>1488</height>
-            <hair_color>BLACK</hair_color>
         </Director>
     </Movie>
 </MovieCollection>

@@ -12,19 +12,8 @@ public class DirectorBuilder implements Builder {
     @NotNull
     private String name;
 
-    @NotNull
-    private Date birthday;
-
-    @Value(min = 0)
-    private int height;
-    @NotNull
-    private Color hairColor;
- //   @NotNull
-  //  private Location location;
-
     @Override
     public Person build() {
-       // return new Person(name, birthday, height, hairColor, location);
-        return new Person(name, birthday, height, hairColor);
+        return new Person(name);
     }
 }
