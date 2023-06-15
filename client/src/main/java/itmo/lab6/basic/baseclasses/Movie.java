@@ -227,7 +227,7 @@ public class Movie implements Comparable<Movie>, Serializable {
 	 * @see Movie#studio
 	 * @see Studio
 	 */
-	public Studio getDirector() {
+	public Studio getStudio() {
 		return studio;
 	}
 
@@ -306,7 +306,7 @@ public class Movie implements Comparable<Movie>, Serializable {
 	 * @see Movie#studio
 	 * @see Studio
 	 */
-	public void setDirector(Studio studio) {
+	public void setStudio(Studio studio) {
 		this.studio = studio;
 	}
 
@@ -345,7 +345,7 @@ public class Movie implements Comparable<Movie>, Serializable {
 	 * Used see if two movies are set on the same position.
 	 */
 	public boolean equals(Movie movie) {
-		return coordinates.equals(movie.getCoordinates()) && name.equals(movie.getName()) && oscarsCount == movie.oscarsCount() && genre == movie.getGenre() && mpaaRating == movie.getRating() && studio.equals(movie.getDirector());
+		return coordinates.equals(movie.getCoordinates()) && name.equals(movie.getName()) && oscarsCount == movie.oscarsCount() && genre == movie.getGenre() && mpaaRating == movie.getRating() && studio.equals(movie.getStudio());
 	}
 
 	/**

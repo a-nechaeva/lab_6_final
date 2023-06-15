@@ -71,7 +71,7 @@ public class Movie implements Comparable<Movie>, Serializable {
      *
      * @see Studio
      */
-    private Studio director;
+    private Studio studio;
 
     /**
      * Constructor to create a movie with the given parameters.
@@ -82,14 +82,14 @@ public class Movie implements Comparable<Movie>, Serializable {
      * @param oscarsCount the number of oscars won by the movie
      * @param genre       the genre of the movie
      * @param mpaaRating  the MPAA rating of the movie
-     * @param director    the director of the movie
+     * @param studio    the director of the movie
      * @see Studio
      * @see Coordinates
      * @see MusicGenre
      * @see MpaaRating
      */
-    public Movie(String name, Coordinates coordinates, Long oscarsCount, MusicGenre genre, MpaaRating mpaaRating, Studio director) {
-        if (name == null || name.isEmpty() || coordinates == null || oscarsCount == null || oscarsCount < 0 || genre == null || mpaaRating == null || director == null)
+    public Movie(String name, Coordinates coordinates, Long oscarsCount, MusicGenre genre, MpaaRating mpaaRating, Studio studio) {
+        if (name == null || name.isEmpty() || coordinates == null || oscarsCount == null || oscarsCount < 0 || genre == null || mpaaRating == null || studio == null)
             throw new IllegalArgumentException("The fields can't be null or empty sequences.");
         this.id = nextId++;
         this.name = name;
@@ -97,7 +97,7 @@ public class Movie implements Comparable<Movie>, Serializable {
         this.oscarsCount = oscarsCount;
         this.genre = genre;
         this.mpaaRating = mpaaRating;
-        this.director = director;
+        this.studio = studio;
         this.creationDate = java.time.ZonedDateTime.now();
     }
 
@@ -112,11 +112,11 @@ public class Movie implements Comparable<Movie>, Serializable {
      * @param oscarsCount  the number of Oscars won by the movie
      * @param genre        the genre of the movie
      * @param mpaaRating   the MPAA rating of the movie
-     * @param director     the director of the movie
-     * @see Movie#Movie(String name, Coordinates coordinates, Long oscarsCount, MusicGenre genre, MpaaRating mpaaRating, Studio director)
+     * @param studio     the director of the movie
+     * @see Movie#Movie(String name, Coordinates coordinates, Long oscarsCount, MusicGenre genre, MpaaRating mpaaRating, Studio studio)
      */
-    public Movie(Long id, String name, Coordinates coordinates, java.time.ZonedDateTime creationDate, Long oscarsCount, MusicGenre genre, MpaaRating mpaaRating, Studio director) {
-        if (name == null || name.isEmpty() || coordinates == null || oscarsCount == null || oscarsCount < 0 || genre == null || mpaaRating == null || director == null)
+    public Movie(Long id, String name, Coordinates coordinates, java.time.ZonedDateTime creationDate, Long oscarsCount, MusicGenre genre, MpaaRating mpaaRating, Studio studio) {
+        if (name == null || name.isEmpty() || coordinates == null || oscarsCount == null || oscarsCount < 0 || genre == null || mpaaRating == null || studio == null)
             throw new IllegalArgumentException("The fields can't be null or empty sequences.");
         nextId++;
         this.id = id;
@@ -126,7 +126,7 @@ public class Movie implements Comparable<Movie>, Serializable {
         this.oscarsCount = oscarsCount;
         this.genre = genre;
         this.mpaaRating = mpaaRating;
-        this.director = director;
+        this.studio = studio;
     }
 
 
@@ -221,21 +221,21 @@ public class Movie implements Comparable<Movie>, Serializable {
 
     /**
      * @return the director of the movie
-     * @see Movie#director
+     * @see Movie#studio
      * @see Studio
      */
-    public Studio getDirector() {
-        return director;
+    public Studio getStudio() {
+        return studio;
     }
 
     /**
      * Used to set the director of the movie.
      *
-     * @see Movie#director
+     * @see Movie#studio
      * @see Studio
      */
-    public void setDirector(Studio director) {
-        this.director = director;
+    public void setStudio(Studio studio) {
+        this.studio = studio;
     }
 
     /**
@@ -294,7 +294,7 @@ public class Movie implements Comparable<Movie>, Serializable {
 //	}
 
     public Object[] getFields() {
-        return new Object[]{id, name, coordinates, creationDate, oscarsCount, genre, mpaaRating, director};
+        return new Object[]{id, name, coordinates, creationDate, oscarsCount, genre, mpaaRating, studio};
     }
 
     /**
@@ -309,7 +309,7 @@ public class Movie implements Comparable<Movie>, Serializable {
      * Used see if two movies are set on the same position.
      */
     public boolean equals(Movie movie) {
-        return coordinates.equals(movie.getCoordinates()) && name.equals(movie.getName()) && oscarsCount == movie.oscarsCount() && genre == movie.getGenre() && mpaaRating == movie.getRating() && director.equals(movie.getDirector());
+        return coordinates.equals(movie.getCoordinates()) && name.equals(movie.getName()) && oscarsCount == movie.oscarsCount() && genre == movie.getGenre() && mpaaRating == movie.getRating() && studio.equals(movie.getStudio());
     }
 
     @Override
@@ -321,6 +321,6 @@ public class Movie implements Comparable<Movie>, Serializable {
                 + "Number of Oscars: " + oscarsCount + ",\n"
                 + "Genre: " + genre + ",\n"
                 + "Mpaa rating: " + mpaaRating + ",\n"
-                + director.toString();
+                + studio.toString();
     }
 }
