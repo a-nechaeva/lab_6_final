@@ -1,5 +1,21 @@
 <MovieCollection>
     <MusicBand>
+        <id>10</id>
+        <name>roses</name>
+        <Coordinates>
+            <x>5.0</x>
+            <y>34.0</y>
+        </Coordinates>
+        <creation_date>2023-06-16T15:12:02.761961700+03:00[Europe/Moscow]</creation_date>
+        <number_of_participants>1</number_of_participants>
+        <singles_count>3</singles_count>
+        <establishment_date>12.04.2009</establishment_date>
+        <genre>HIP_HOP</genre>
+        <Studio>
+            <name>yii</name>
+        </Studio>
+    </MusicBand>
+    <MusicBand>
         <id>9</id>
         <name>ghjk</name>
         <Coordinates>

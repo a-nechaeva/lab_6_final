@@ -7,7 +7,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.Hashtable;
 
 /**
- * The abstract class {@code MHMap} is a wrapper for the {@code HashMap} class.
+ * The abstract class {@code MusicBandHashtable} is a wrapper for the {@code HashMap} class.
  * It provides a set of methods for working with the {@code HashMap} class.
  * It is inherited by the {@code MovieCol} class.
  *
@@ -16,7 +16,7 @@ import java.util.Hashtable;
  * @author dorlneylon
  * @see MovieCollection
  */
-public abstract class MHMap<K, V> {
+public abstract class MusicBandHashtable<K, V> {
     /**
      * A constant to represent the white color code in ANSI escape codes.
      */
@@ -35,7 +35,7 @@ public abstract class MHMap<K, V> {
     /**
      * the default constructor
      */
-    public MHMap() {
+    public MusicBandHashtable() {
         this.map = new Hashtable<>();
         this.initTime = ZonedDateTime.now();
     }
@@ -105,7 +105,7 @@ public abstract class MHMap<K, V> {
     /**
      * assign the map
      */
-    public void assign(MHMap<K, V> map) {
+    public void assign(MusicBandHashtable<K, V> map) {
         this.map = map.getMap();
     }
 

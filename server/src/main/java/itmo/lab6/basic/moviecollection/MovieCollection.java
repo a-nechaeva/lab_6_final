@@ -8,16 +8,16 @@ import java.util.Comparator;
 import java.util.stream.Collectors;
 
 /**
- * The MovieCol class is a collection based on HashMap that extends the MHMap class.
+ * The MovieCol class is a collection based on HashMap that extends the MusicBandHashtable class.
  * This class contains instance variables used to store information about movies.
  *
  * @author dorlneylon
  * @version 1.0?
- * @see MHMap
+ * @see MusicBandHashtable
  * @see MusicBand
  * @since 03.02.2023
  */
-public class MovieCollection extends MHMap<Long, MusicBand> {
+public class MovieCollection extends MusicBandHashtable<Long, MusicBand> {
     /**
      * Instantiates a new MovieCol object.
      */
