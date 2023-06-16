@@ -6,6 +6,7 @@ import itmo.lab6.basic.baseenums.MusicGenre;
 import java.io.Serial;
 import java.io.Serializable;
 import java.time.format.DateTimeFormatter;
+import java.util.Date;
 
 /**
  * The `Movie` class represents a movie, which includes its name, creation date,
@@ -56,7 +57,7 @@ public class MusicBand implements Comparable<MusicBand>, Serializable {
      */
     private Integer singlesCount;
 
-    private java.time.LocalDate establishmentDate;
+    private Date establishmentDate;
 
 
     /**
@@ -88,7 +89,7 @@ public class MusicBand implements Comparable<MusicBand>, Serializable {
      * @see Coordinates
      * @see MusicGenre
      */
-    public MusicBand(String name, Coordinates coordinates, int numberOfParticipants, Integer singlesCount, java.time.LocalDate establishmentDate, MusicGenre genre, Studio studio) {
+    public MusicBand(String name, Coordinates coordinates, int numberOfParticipants, Integer singlesCount, Date establishmentDate, MusicGenre genre, Studio studio) {
         if (name == null || name.isEmpty() || coordinates == null || numberOfParticipants < 0 || genre == null  || studio == null)
             throw new IllegalArgumentException("The fields can't be null or empty sequences.");
         this.id = nextId++;
@@ -115,9 +116,9 @@ public class MusicBand implements Comparable<MusicBand>, Serializable {
      * @param establishmentDate the date of establish
      * @param genre        the genre of the movie
      * @param studio     the director of the movie
-     * @see MusicBand#MusicBand(String name, Coordinates coordinates, int numberOfParticipants, Integer singlesCount, java.time.LocalDate establishmentDate, MusicGenre genre, Studio studio)
+     * @see MusicBand#MusicBand(String name, Coordinates coordinates, int numberOfParticipants, Integer singlesCount, Date establishmentDate, MusicGenre genre, Studio studio)
      */
-    public MusicBand(Long id, String name, Coordinates coordinates, java.time.ZonedDateTime creationDate, int numberOfParticipants, Integer singlesCount, java.time.LocalDate establishmentDate, MusicGenre genre, Studio studio) {
+    public MusicBand(Long id, String name, Coordinates coordinates, java.time.ZonedDateTime creationDate, int numberOfParticipants, Integer singlesCount, Date establishmentDate, MusicGenre genre, Studio studio) {
         if (name == null || name.isEmpty() || coordinates == null || numberOfParticipants < 0 || genre == null  || studio == null)
             throw new IllegalArgumentException("The fields can't be null or empty sequences.");
         nextId++;
@@ -160,8 +161,8 @@ public class MusicBand implements Comparable<MusicBand>, Serializable {
     }
 
 
-    public java.time.LocalDate getEstablishmentDate() {return establishmentDate;}
-    public void setEstablishmentDate(java.time.LocalDate establishmentDate) {
+    public Date getEstablishmentDate() {return establishmentDate;}
+    public void setEstablishmentDate(Date establishmentDate) {
         this.establishmentDate = establishmentDate;
     }
 
@@ -313,13 +314,14 @@ public class MusicBand implements Comparable<MusicBand>, Serializable {
 
     @Override
     public String toString() {
+        String establishmentDate = new java.text.SimpleDateFormat("dd.MM.yyyy").format(this.establishmentDate);
         return id + ".\n"
                 + "Film's title: " + name + ",\n"
                 + "Film's coords: " + coordinates + ",\n"
                 + "Creation Date: " + creationDate.format(DateTimeFormatter.ofPattern("dd.MM.yyyy")) + ",\n"
                 + "Number of Participants: " + numberOfParticipants + ",\n"
                 + "Singles Count: " + singlesCount + ",\n"
-       + "Establishment Date = " + establishmentDate.format(DateTimeFormatter.ofPattern("dd.MM.yyyy")) + ",\n"
+       + "Establishment Date = " + establishmentDate + ",\n"
                 + "Genre: " + genre + ",\n"
                 + studio.toString();
     }

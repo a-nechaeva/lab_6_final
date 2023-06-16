@@ -12,7 +12,7 @@ import java.io.Serializable;
  * @since ??.??.????
  */
 public class Coordinates implements Serializable {
-    private Float x;
+    private float x;
     private Double y;
 
     /**
@@ -21,7 +21,7 @@ public class Coordinates implements Serializable {
      * @param x the x value of the coordinate
      * @param y the y value of the coordinate
      */
-    public Coordinates(Float x, Double y) {
+    public Coordinates(float x, Double y) {
         if (x <= -97 || y < -480) throw new IllegalArgumentException("Invalid coordinates");
         this.x = x;
         this.y = y;
@@ -40,7 +40,7 @@ public class Coordinates implements Serializable {
      *
      * @return the x value of the coordinate
      */
-    public Float getX() {
+    public float getX() {
         return x;
     }
 
@@ -72,7 +72,7 @@ public class Coordinates implements Serializable {
     }
 
     public boolean equals(Coordinates c) {
-        return c.getX().equals(this.x) && c.getY().equals(this.y);
+        return c.getX() == this.x && c.getY().equals(this.y);
     }
 
     /**

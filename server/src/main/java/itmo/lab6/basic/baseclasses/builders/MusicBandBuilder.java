@@ -8,6 +8,7 @@ import itmo.lab6.basic.baseclasses.builders.annotations.NotEmpty;
 import itmo.lab6.basic.baseclasses.builders.annotations.NotNull;
 import itmo.lab6.basic.baseclasses.builders.annotations.Value;
 import itmo.lab6.basic.baseenums.MusicGenre;
+import java.util.Date;
 
 public class MusicBandBuilder implements Builder {
     @NotNull
@@ -29,7 +30,7 @@ public class MusicBandBuilder implements Builder {
     @Value(min = 0)
     private Integer singlesCount;
 
-    private java.time.LocalDate establishmentDate;
+    private Date establishmentDate;
 
     @NotNull
     private MusicGenre genre;

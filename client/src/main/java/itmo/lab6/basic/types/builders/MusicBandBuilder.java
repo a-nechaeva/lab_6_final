@@ -30,7 +30,7 @@ public class MusicBandBuilder implements Builder {
     @Value(min = 0)
     private Integer singlesCount;
 
-    private java.time.LocalDate establishmentDate;
+    private java.util.Date establishmentDate;
 
     @NotNull
     private MusicGenre genre;

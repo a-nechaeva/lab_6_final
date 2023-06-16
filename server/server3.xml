@@ -1,18 +1,18 @@
 <MovieCollection>
     <MusicBand>
         <id>5</id>
-        <name>fd</name>
+        <name>ghj</name>
         <Coordinates>
-            <x>100.0</x>
-            <y>200.0</y>
+            <x>2.0</x>
+            <y>4.0</y>
         </Coordinates>
-        <creation_date>2023-03-28T17:05:53.030202031+03:00[Europe/Moscow]</creation_date>
-        <number_of_participants>300</number_of_participants>
-        <singles_count>3</singles_count>
-        <establishment_date>1974-09-17</establishment_date>
-        <genre>RAP</genre>
+        <creation_date>2023-06-16T13:38:46.489846+03:00[Europe/Moscow]</creation_date>
+        <number_of_participants>12</number_of_participants>
+        <singles_count>2</singles_count>
+        <establishment_date>12.09.2000</establishment_date>
+        <genre>POST_ROCK</genre>
         <Studio>
-            <name> jh </name>
+            <name>hjk</name>
         </Studio>
     </MusicBand>
     <MusicBand>
@@ -25,7 +25,7 @@
         <creation_date>2023-03-28T17:05:53.030202031+03:00[Europe/Moscow]</creation_date>
         <number_of_participants>400</number_of_participants>
         <singles_count>3</singles_count>
-        <establishment_date>1974-09-17</establishment_date>
+        <establishment_date>14.02.2002</establishment_date>
         <genre>RAP</genre>
         <Studio>
             <name> jh </name>
@@ -41,10 +41,26 @@
         <creation_date>2023-03-28T17:05:53.030202031+03:00[Europe/Moscow]</creation_date>
         <number_of_participants>700</number_of_participants>
         <singles_count>3</singles_count>
-        <establishment_date>1974-09-17</establishment_date>
+        <establishment_date>14.02.2002</establishment_date>
         <genre>RAP</genre>
         <Studio>
             <name> jh </name>
+        </Studio>
+    </MusicBand>
+    <MusicBand>
+        <id>8</id>
+        <name>ghjk</name>
+        <Coordinates>
+            <x>5.0</x>
+            <y>7.0</y>
+        </Coordinates>
+        <creation_date>2023-06-16T13:38:03.658566800+03:00[Europe/Moscow]</creation_date>
+        <number_of_participants>67</number_of_participants>
+        <singles_count>78</singles_count>
+        <establishment_date>12.04.2000</establishment_date>
+        <genre>RAP</genre>
+        <Studio>
+            <name>ghj</name>
         </Studio>
     </MusicBand>
 </MovieCollection>

@@ -7,7 +7,7 @@ import itmo.lab6.basic.baseclasses.builders.annotations.Value;
 public class CoordinatesBuilder implements Builder {
 
     @Value(min = -98)
-    private Float x;
+    private float x;
     @Value(min = -480)
     @NotNull
     private Double y;

@@ -7,7 +7,7 @@ public class BuilderFactory {
             case "date" -> new DateBuilder();
             case "studio" -> new StudioBuilder();
            // case "location" -> new LocationBuilder();
-            case "music_band" -> new MusicBandBuilder();
+            case "musicband" -> new MusicBandBuilder();
             default -> null;
         };
     }

@@ -17,7 +17,7 @@ public class ServerMain {
     private static Integer serverPort;
 
     static {
-        Config config = new Config("C:\\Users\\user\\OneDrive\\Рабочий стол\\renew\\prog-6-develop\\server\\server.scfg");
+        Config config = new Config("server.scfg");
         collectionFileName = config.get("collection_file");
         if (collectionFileName == null) {
             // Setting up the default file name
