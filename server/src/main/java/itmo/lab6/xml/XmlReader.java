@@ -4,6 +4,7 @@ package itmo.lab6.xml;
 import itmo.lab6.basic.baseclasses.MusicBand;
 import itmo.lab6.basic.baseclasses.builders.Builder;
 import itmo.lab6.basic.moviecollection.MovieCollection;
+
 import itmo.lab6.server.ServerLogger;
 import itmo.lab6.utils.string.StringUtils;
 import org.w3c.dom.*;
@@ -52,9 +53,9 @@ public class XmlReader extends XmlAction {
 
     @Deprecated(forRemoval = true)
     public MovieCollection parse(File file) {
-        MovieCollection movieCollection;
-        movieCollection = readXML(file);
-        return movieCollection;
+        MovieCollection musicCollection;
+        musicCollection = readXML(file);
+        return musicCollection;
     }
 
     private MovieCollection readXML(File file) throws RuntimeException {
@@ -68,7 +69,7 @@ public class XmlReader extends XmlAction {
         document.normalizeDocument();
         Element root = document.getDocumentElement();
         NodeList rootTree = root.getChildNodes();
-        MovieCollection movieCollection = new MovieCollection();
+        MovieCollection musicCollection = new MovieCollection();
         for (int i = 0; i < rootTree.getLength(); i++) {
             Node node = rootTree.item(i);
             // Getting only Products
@@ -80,10 +81,10 @@ public class XmlReader extends XmlAction {
                     ServerLogger.getLogger().warning(e.getMessage());
                     continue;
                 }
-                movieCollection.insert(musicBand);
+                musicCollection.insert(musicBand);
             }
         }
-        return movieCollection;
+        return musicCollection;
     }
 
     private Object parseItem(Node node) throws ClassNotFoundException {
