@@ -4,7 +4,7 @@ import itmo.lab6.server.ServerLogger;
 
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.HashMap;
+import java.util.Hashtable;
 
 /**
  * The abstract class {@code MHMap} is a wrapper for the {@code HashMap} class.
@@ -30,13 +30,13 @@ public abstract class MHMap<K, V> {
     /**
      * the map itself
      */
-    private HashMap<K, V> map;
+    private Hashtable<K, V> map;
 
     /**
      * the default constructor
      */
     public MHMap() {
-        this.map = new HashMap<>();
+        this.map = new Hashtable<>();
         this.initTime = ZonedDateTime.now();
     }
 
@@ -200,7 +200,7 @@ public abstract class MHMap<K, V> {
     /**
      * get the map
      */
-    public HashMap<K, V> getMap() {
+    public Hashtable<K, V> getMap() {
         return this.map;
     }
 

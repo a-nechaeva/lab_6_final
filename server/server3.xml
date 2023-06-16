@@ -1,34 +1,34 @@
 <MovieCollection>
     <MusicBand>
-        <id>5</id>
+        <id>9</id>
         <name>ghjk</name>
         <Coordinates>
-            <x>2.0</x>
-            <y>3.0</y>
+            <x>6.0</x>
+            <y>8.0</y>
         </Coordinates>
-        <creation_date>2023-06-16T14:49:57.789549500+03:00[Europe/Moscow]</creation_date>
-        <number_of_participants>12</number_of_participants>
-        <singles_count>3</singles_count>
-        <establishment_date>12.09.2000</establishment_date>
-        <genre>BRIT_POP</genre>
+        <creation_date>2023-06-16T15:09:07.801863300+03:00[Europe/Moscow]</creation_date>
+        <number_of_participants>7</number_of_participants>
+        <singles_count>9</singles_count>
+        <establishment_date>12.02.1999</establishment_date>
+        <genre>RAP</genre>
         <Studio>
-            <name>ghj</name>
+            <name>gghhj</name>
         </Studio>
     </MusicBand>
     <MusicBand>
-        <id>6</id>
-        <name>fd</name>
+        <id>8</id>
+        <name>ghjk</name>
         <Coordinates>
-            <x>100.0</x>
-            <y>200.0</y>
+            <x>5.0</x>
+            <y>7.0</y>
         </Coordinates>
-        <creation_date>2023-03-28T17:05:53.030202031+03:00[Europe/Moscow]</creation_date>
-        <number_of_participants>400</number_of_participants>
-        <singles_count>3</singles_count>
-        <establishment_date>14.02.2002</establishment_date>
+        <creation_date>2023-06-16T13:38:03.658566800+03:00[Europe/Moscow]</creation_date>
+        <number_of_participants>67</number_of_participants>
+        <singles_count>78</singles_count>
+        <establishment_date>12.04.2000</establishment_date>
         <genre>RAP</genre>
         <Studio>
-            <name> jh </name>
+            <name>ghj</name>
         </Studio>
     </MusicBand>
     <MusicBand>
@@ -48,17 +48,33 @@
         </Studio>
     </MusicBand>
     <MusicBand>
-        <id>8</id>
+        <id>6</id>
+        <name>fd</name>
+        <Coordinates>
+            <x>100.0</x>
+            <y>200.0</y>
+        </Coordinates>
+        <creation_date>2023-03-28T17:05:53.030202031+03:00[Europe/Moscow]</creation_date>
+        <number_of_participants>400</number_of_participants>
+        <singles_count>3</singles_count>
+        <establishment_date>14.02.2002</establishment_date>
+        <genre>RAP</genre>
+        <Studio>
+            <name> jh </name>
+        </Studio>
+    </MusicBand>
+    <MusicBand>
+        <id>5</id>
         <name>ghjk</name>
         <Coordinates>
-            <x>5.0</x>
-            <y>7.0</y>
+            <x>2.0</x>
+            <y>3.0</y>
         </Coordinates>
-        <creation_date>2023-06-16T13:38:03.658566800+03:00[Europe/Moscow]</creation_date>
-        <number_of_participants>67</number_of_participants>
-        <singles_count>78</singles_count>
-        <establishment_date>12.04.2000</establishment_date>
-        <genre>RAP</genre>
+        <creation_date>2023-06-16T14:49:57.789549500+03:00[Europe/Moscow]</creation_date>
+        <number_of_participants>12</number_of_participants>
+        <singles_count>3</singles_count>
+        <establishment_date>12.09.2000</establishment_date>
+        <genre>BRIT_POP</genre>
         <Studio>
             <name>ghj</name>
         </Studio>
