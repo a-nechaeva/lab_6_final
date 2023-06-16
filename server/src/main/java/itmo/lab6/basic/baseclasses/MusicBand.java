@@ -285,7 +285,7 @@ public class MusicBand implements Comparable<MusicBand>, Serializable {
      */
     @Override
     public int compareTo(MusicBand musicBand) {
-        return  (int) (this.getNumberOfParticipants() - musicBand.getNumberOfParticipants());
+        return  (int) (this.getSinglesCount() - musicBand.getSinglesCount());
     }
 
     /**

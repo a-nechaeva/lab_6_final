@@ -14,8 +14,11 @@ public enum CommandType implements Serializable {
     INSERT(InsertCommand.class, "insert <id> {element}: add a new element with the specified key"),
     PRINT_ASCENDING(PrintAscendingCommand.class, "print_ascending: print the elements of the collection in ascending order"),
     PRINT_DESCENDING(PrintDescendingCommand.class, "print_descending: print the elements of the collection in descending order"),
-     REMOVE_GREATER(RemoveGreaterCommand.class, "remove_greater <Oscars>: remove from the collection all elements exceeding the specified"),
-    REPLACE_IF_LOWER(ReplaceLowerCommand.class, "replace_if_lower <id> {element}: replace the value by key if the new value is less than the old one."),
+     REMOVE_GREATER(RemoveLowerCommand.class, "remove_greater <SinglesCount>: remove from the collection all elements exceeding the specified"),
+
+    REMOVE_LOWER(RemoveLowerCommand.class, "remove_lower <SinglesCount>: remove from the collection all elements less than the specified"),
+
+    //  REPLACE_IF_LOWER(ReplaceLowerCommand.class, "replace_if_lower <id> {element}: replace the value by key if the new value is less than the old one."),
     REMOVE_KEY(RemoveKeyCommand.class, "remove_key <id>: delete an element from the collection by its key"),
     SHOW(ShowCommand.class, "show: output to the standard output stream all elements of the collection in the string representation"),
     UPDATE(UpdateCommand.class, "update <id> {element}: update the value of a collection element whose id is equal to the specified"),

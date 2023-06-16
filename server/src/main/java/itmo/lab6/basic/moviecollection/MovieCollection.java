@@ -28,7 +28,9 @@ public class MovieCollection extends MusicBandHashtable<Long, MusicBand> {
      * @see Studio
      */
     public String show() {
-        return Arrays.stream(this.values()).map(MusicBand::toString).collect(Collectors.joining("\n"));
+        MusicBand[] musicBands = getSortedMoviesName(false);
+        return Arrays.stream(musicBands).map(Object::toString).collect(Collectors.joining("\n"));
+      //  return Arrays.stream(this.values()).map(MusicBand::toString).collect(Collectors.joining("\n"));
     }
 
     /**
@@ -38,7 +40,19 @@ public class MovieCollection extends MusicBandHashtable<Long, MusicBand> {
      */
     public boolean removeGreater(Long key) {
         return Arrays.stream(this.values())
-                .filter(musicBand -> musicBand.getNumberOfParticipants() > key)
+                .filter(musicBand -> musicBand.getSinglesCount() > key)
+                .map(movie -> this.removeByKey(movie.getId()))
+                .reduce(false, (a, b) -> a || b);
+    }
+
+    /**
+     * removes all elements with less number of participants than given key from the collection.
+     *
+     * @param key the key to compare with.
+     */
+    public boolean removeLower(Long key) {
+        return Arrays.stream(this.values())
+                .filter(musicBand -> musicBand.getSinglesCount() < key)
                 .map(movie -> this.removeByKey(movie.getId()))
                 .reduce(false, (a, b) -> a || b);
     }
@@ -140,18 +154,11 @@ public class MovieCollection extends MusicBandHashtable<Long, MusicBand> {
         return musicBands;
     }
 
-    /**
-     * remove the elements with the specified rating from the collection.
-     *
-     * @param rating the rating to check
-     * @return true if the operation was successful, false otherwise
-    // * @see MpaaRating
-     */
-  /*  public boolean removeByRating(MpaaRating rating) {
-        Arrays.stream(this.values()).filter(movie -> movie.getRating() == rating).forEach(this::removeByValue);
-        return true;
+    public MusicBand[] getSortedMoviesName(boolean reverse) {
+        MusicBand[] musicBands = this.values();
+        Arrays.sort(musicBands, (reverse) ? Comparator.reverseOrder() : Comparator.naturalOrder());
+        return musicBands;
     }
 
-   */
 
 }

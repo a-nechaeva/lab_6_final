@@ -17,7 +17,7 @@ public final class CollectionValidator {
     /**
      * Метод проверяет:
      * 1. Если команда INSERT, то проверяет, не существует ли ключ в коллекции. Если существует, то возвращает false.
-     * 2. Если команда UPDATE или REPLACE_IF_LOWER, то проверяет, существует ли ключ в коллекции. Если не существует, то возвращает false.
+     * 2. Если команда UPDATE, то проверяет, существует ли ключ в коллекции. Если не существует, то возвращает false.
      */
     public static Boolean checkIfExists(CommandType command, Long key) throws Exception {
         connector.send(CommandSerializer.serialize(new Command(CommandType.SERVICE, "check_id %d".formatted(key))));
@@ -25,7 +25,7 @@ public final class CollectionValidator {
         if (command.equals(CommandType.INSERT)) {
             // True if key does not exist
             return receivedStatus;
-        } else if (command.equals(CommandType.UPDATE) || command.equals(CommandType.REPLACE_IF_LOWER)) {
+        } else if (command.equals(CommandType.UPDATE)) {
             // True if key exists
             return !receivedStatus;
         }

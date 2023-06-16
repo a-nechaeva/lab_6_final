@@ -54,13 +54,7 @@ public final class CommandFactory {
                 System.out.println(commandsHistory.stream().map(CommandType::name).reduce((s1, s2) -> s1 + "\n" + s2).orElse("No commands were executed."));
                 yield null;
             }
-//                try {
-//                    yield new Command(type, InetAddress.getLoopbackAddress(), Connector.getPort());
-//                } catch (Exception e) {
-//                    System.err.println("Error: " + e.getMessage());
-//                    yield null;
-//                }
-            case REMOVE_GREATER, REMOVE_KEY -> {
+            case REMOVE_GREATER, REMOVE_KEY, REMOVE_LOWER -> {
                 if (args.length < 1) {
                     System.err.println("Not enough arguments for command " + type.name());
                     yield null;
@@ -73,7 +67,7 @@ public final class CommandFactory {
                 }
             }
 
-            case INSERT, UPDATE, REPLACE_IF_LOWER -> {
+            case INSERT, UPDATE -> {
                 MusicBand musicBand = null;
                 if (args.length == 1) {
                     musicBand = parseMovie(type, args);
