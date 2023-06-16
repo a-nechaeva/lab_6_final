@@ -30,6 +30,8 @@ public class MovieBuilder implements Builder {
     @Value(min = 0)
     private Integer singlesCount;
 
+    private java.time.LocalDate establishmentDate;
+
     @NotNull
     private MusicGenre genre;
 
@@ -38,6 +40,6 @@ public class MovieBuilder implements Builder {
 
     @Override
     public Movie build() {
-        return new Movie(id, name, coordinates, creationDate, numberOfParticipants, singlesCount, genre, studio);
+        return new Movie(id, name, coordinates, creationDate, numberOfParticipants, singlesCount, establishmentDate, genre, studio);
     }
 }

@@ -57,6 +57,8 @@ public class Movie implements Comparable<Movie>, Serializable {
      */
     private Integer singlesCount;
 
+    private java.time.LocalDate establishmentDate;
+
 
     /**
      * The genre of the movie.
@@ -80,13 +82,14 @@ public class Movie implements Comparable<Movie>, Serializable {
      * @param coordinates the coordinates of the movie
      * @param numberOfParticipants the number of oscars won by the movie
      * @param singlesCount the number of singles
+     * @param establishmentDate the date of establish
      * @param genre       the genre of the movie
      * @param studio    the director of the movie
      * @see Studio
      * @see Coordinates
      * @see MusicGenre
      */
-    public Movie(String name, Coordinates coordinates, int numberOfParticipants, Integer singlesCount, MusicGenre genre, Studio studio) {
+    public Movie(String name, Coordinates coordinates, int numberOfParticipants, Integer singlesCount, java.time.LocalDate establishmentDate, MusicGenre genre, Studio studio) {
         if (name == null || name.isEmpty() || coordinates == null || numberOfParticipants < 0 || genre == null  || studio == null)
             throw new IllegalArgumentException("The fields can't be null or empty sequences.");
         this.id = nextId++;
@@ -94,6 +97,7 @@ public class Movie implements Comparable<Movie>, Serializable {
         this.coordinates = coordinates;
         this.numberOfParticipants = numberOfParticipants;
         this.singlesCount = singlesCount;
+        this.establishmentDate = establishmentDate;
         this.genre = genre;
         this.studio = studio;
         this.creationDate = java.time.ZonedDateTime.now();
@@ -109,11 +113,12 @@ public class Movie implements Comparable<Movie>, Serializable {
      * @param creationDate the creation date of the movie
      * @param singlesCount the number of singles
      * @param numberOfParticipants  the number of participants
+     * @param establishmentDate the date of establish
      * @param genre        the genre of the movie
      * @param studio     the director of the movie
-     * @see Movie#Movie(String name, Coordinates coordinates, int numberOfParticipants, Integer singlesCount, MusicGenre genre, Studio studio)
+     * @see Movie#Movie(String name, Coordinates coordinates, int numberOfParticipants, Integer singlesCount, java.time.LocalDate establishmentDate, MusicGenre genre, Studio studio)
      */
-    public Movie(Long id, String name, Coordinates coordinates, java.time.ZonedDateTime creationDate, int numberOfParticipants, Integer singlesCount, MusicGenre genre, Studio studio) {
+    public Movie(Long id, String name, Coordinates coordinates, java.time.ZonedDateTime creationDate, int numberOfParticipants, Integer singlesCount, java.time.LocalDate establishmentDate, MusicGenre genre, Studio studio) {
         if (name == null || name.isEmpty() || coordinates == null || numberOfParticipants < 0 || genre == null  || studio == null)
             throw new IllegalArgumentException("The fields can't be null or empty sequences.");
         nextId++;
@@ -122,6 +127,7 @@ public class Movie implements Comparable<Movie>, Serializable {
         this.coordinates = coordinates;
         this.creationDate = creationDate;
         this.numberOfParticipants = numberOfParticipants;
+        this.establishmentDate = establishmentDate;
         this.singlesCount = singlesCount;
         this.genre = genre;
         this.studio = studio;
@@ -152,6 +158,12 @@ public class Movie implements Comparable<Movie>, Serializable {
      */
     public void setId(Long id) {
         this.id = id;
+    }
+
+
+    public java.time.LocalDate getEstablishmentDate() {return establishmentDate;}
+    public void setEstablishmentDate(java.time.LocalDate establishmentDate) {
+        this.establishmentDate = establishmentDate;
     }
 
     /**
@@ -313,6 +325,7 @@ public class Movie implements Comparable<Movie>, Serializable {
                 + "Creation Date: " + creationDate.format(DateTimeFormatter.ofPattern("dd.MM.yyyy")) + ",\n"
                 + "Number of Participants: " + numberOfParticipants + ",\n"
                 + "Singles Count: " + singlesCount + ",\n"
+       + "Establishment Date = " + establishmentDate.format(DateTimeFormatter.ofPattern("dd.MM.yyyy")) + ",\n"
                 + "Genre: " + genre + ",\n"
                 + studio.toString();
     }

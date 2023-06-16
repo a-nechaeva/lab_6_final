@@ -17,6 +17,7 @@ import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.time.ZonedDateTime;
 import java.util.Arrays;
 import java.util.Collection;
@@ -157,6 +158,7 @@ public class XmlReader extends XmlAction {
                 case "Long", "long" -> Long.parseLong((String) value);
                 case "Float", "float" -> Float.parseFloat((String) value);
                 case "Double", "double" -> Double.parseDouble((String) value);
+                case "LocalDate" -> LocalDate.parse(value.toString());
                 case "Date" -> {
                     SimpleDateFormat format = new SimpleDateFormat("dd.MM.yyyy");
                     yield format.parse(value.toString());
