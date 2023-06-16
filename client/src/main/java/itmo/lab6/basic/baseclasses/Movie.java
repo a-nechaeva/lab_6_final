@@ -65,6 +65,11 @@ public class Movie implements Comparable<Movie>, Serializable {
 	private int numberOfParticipants;
 
 	/**
+	 * The number of singles. Not negative.
+	 */
+	private Integer singlesCount;
+
+	/**
 	 * The genre of the movie.
 	 * @see MusicGenre
 	 */
@@ -82,6 +87,7 @@ public class Movie implements Comparable<Movie>, Serializable {
 	 * @param name the name of the movie
 	 * @param coordinates the coordinates of the movie
 	 * @param numberOfParticipants the number of participants
+	 * @param singlesCount the number of singles
 	 * @param genre the genre of the movie
 	 * @param studio the director of the movie
 	 * @see Studio
@@ -89,23 +95,25 @@ public class Movie implements Comparable<Movie>, Serializable {
 	 * @see MusicGenre
 	// * @see MpaaRating
 	 */
-	public Movie(String name, Coordinates coordinates, int numberOfParticipants, MusicGenre genre, Studio studio) {
+	public Movie(String name, Coordinates coordinates, int numberOfParticipants, Integer singlesCount, MusicGenre genre, Studio studio) {
 		if (name == null || name.isEmpty() || coordinates == null  || numberOfParticipants < 0 || genre == null || studio == null) throw new IllegalArgumentException("The fields can't be null or empty sequences.");
 		this.id = nextId++;
 		this.name = name;
 		this.coordinates = coordinates;
 		this.numberOfParticipants = numberOfParticipants;
+		this.singlesCount = singlesCount;
 		this.genre = genre;
 		this.studio = studio;
 		this.creationDate = java.time.ZonedDateTime.now();
 	}
 
-	public Movie(Long id, String name, Coordinates coordinates, int numberOfParticipants, MusicGenre genre, Studio studio) {
+	public Movie(Long id, String name, Coordinates coordinates, int numberOfParticipants, Integer singlesCount, MusicGenre genre, Studio studio) {
 		if (name == null || name.isEmpty() || coordinates == null ||  numberOfParticipants < 0 || genre == null || studio == null) throw new IllegalArgumentException("The fields can't be null or empty sequences.");
 		this.id = id;
 		this.name = name;
 		this.coordinates = coordinates;
 		this.numberOfParticipants = numberOfParticipants;
+		this.singlesCount = singlesCount;
 		this.genre = genre;
 		this.studio = studio;
 		this.creationDate = java.time.ZonedDateTime.now();
@@ -120,12 +128,12 @@ public class Movie implements Comparable<Movie>, Serializable {
 	 * @param coordinates the coordinates of the movie
 	 * @param creationDate the creation date of the movie
 	 * @param numberOfParticipants the number of participants
+	 * @param singlesCount the number of singles
 	 * @param genre the genre of the movie
-//	 * @param mpaaRating the MPAA rating of the movie
 	 * @param studio the director of the movie
-	 * @see Movie#Movie(String name, Coordinates coordinates, int numberOfParticipants, MusicGenre genre, Studio studio)
+	 * @see Movie#Movie(String name, Coordinates coordinates, int numberOfParticipants, Integer singlesCount, MusicGenre genre, Studio studio)
 	 */
-	public Movie(Long id, String name, Coordinates coordinates, java.time.ZonedDateTime creationDate, int numberOfParticipants, MusicGenre genre, Studio studio) {
+	public Movie(Long id, String name, Coordinates coordinates, java.time.ZonedDateTime creationDate, int numberOfParticipants, Integer singlesCount, MusicGenre genre, Studio studio) {
 		if (name == null || name.isEmpty() || coordinates == null || numberOfParticipants < 0 || genre == null  || studio == null) throw new IllegalArgumentException("The fields can't be null or empty sequences.");
 		nextId++;
 		this.id = id;
@@ -133,6 +141,7 @@ public class Movie implements Comparable<Movie>, Serializable {
 		this.coordinates = coordinates;
 		this.creationDate = creationDate;
 		this.numberOfParticipants = numberOfParticipants;
+		this.singlesCount = singlesCount;
 		this.genre = genre;
 		this.studio = studio;
 	}
@@ -141,7 +150,7 @@ public class Movie implements Comparable<Movie>, Serializable {
 	 * Constructs a `Movie` instance with the specified name, and random values for the other attributes.
 	 *
 	 * @param name the name of the movie
-	 * @see Movie#Movie(String name, Coordinates coordinates, int numberOfParticipants, MusicGenre genre, Studio studio)
+	 * @see Movie#Movie(String name, Coordinates coordinates, int numberOfParticipants, Integer singlesCount, MusicGenre genre, Studio studio)
 	 */
 	public Movie(String name) {
 		this.id = nextId++;
@@ -149,27 +158,17 @@ public class Movie implements Comparable<Movie>, Serializable {
 		this.creationDate = java.time.ZonedDateTime.now();
 		this.coordinates = new Coordinates();
 		this.numberOfParticipants = 0;
+		this.singlesCount = null;
 		this.genre = Randomness.random(MusicGenre.class);
 		this.studio = new Studio();
 	}
 
 	/**
 	 * Constructs a `Movie` instance with default values for all attributes.
-	 * @see Movie#Movie(String name, Coordinates coordinates, int numberOfParticipants, MusicGenre genre, Studio studio)
+	 * @see Movie#Movie(String name, Coordinates coordinates, int numberOfParticipants, Integer singlesCount, MusicGenre genre, Studio studio)
 	 */
 	public Movie() {}
 
-
-	/**
-	 * @return the amount of Oscars won by the movie
-	 * @see Movie#numberOfParticipants
-	 */
-/*	public int numberOf() {
-		return numberOfParticipants;
-	}
-
-
- */
 
 	/**
 	 * @return the unique ID of the movie
@@ -225,21 +224,18 @@ public class Movie implements Comparable<Movie>, Serializable {
 	 * @return the amount of Oscars won by the movie.
 	// * @see Movie#oscarsCount()
 	 */
-	@Deprecated
+	//@Deprecated
 	public int getNumberOfParticipants() {
 		return numberOfParticipants;
 	}
 
 	/**
-	 * @return the amount of Oscars won by the movie as an integer.
-//	 * @see Movie#oscarsCount()
-	// * @see MpaaRating
+	 * @return the amount of Oscars won by the movie.
+	// * @see Movie#oscarsCount()
 	 */
-/*	public int getOscarsInt() {
-		return (int) numberOfParticipants;
+	public Integer getSinglesCount() {
+		return singlesCount;
 	}
-
- */
 
 
 	/**
@@ -264,6 +260,10 @@ public class Movie implements Comparable<Movie>, Serializable {
 	 */
 	public void setNumberOfParticipants(int numberOfParticipants) {
 		this.numberOfParticipants = numberOfParticipants;
+	}
+
+	public void setSinglesCount(Integer singlesCount) {
+		this.singlesCount = singlesCount;
 	}
 
 	/**
@@ -315,8 +315,6 @@ public class Movie implements Comparable<Movie>, Serializable {
 	 */
 	@Override
 	public int compareTo(Movie movie) {  return (int) (this.getNumberOfParticipants() - movie.getNumberOfParticipants()); }
-	//public int compareTo(Movie movie) { return Long.compare(oscarsCount(), movie.oscarsCount()); }
-
 
 
 	/**
@@ -336,6 +334,7 @@ public class Movie implements Comparable<Movie>, Serializable {
 			+ prcr + "Film's coords: " + whcr + coordinates + ",\n"
 			+ prcr + "Creation Date: " + whcr + creationDate.format(DateTimeFormatter.ofPattern("dd.MM.yyyy")) + ",\n"
 			+ prcr + "Number of Participants: " + whcr + numberOfParticipants + ",\n"
+			+ prcr + "Singles Count: " + whcr + singlesCount + ",\n"
 			+ prcr + "Genre: " + whcr + genre + ",\n"
 			+ prcr + "\n" + studio.toString();
 	}

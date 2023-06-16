@@ -27,17 +27,17 @@ public class MovieBuilder implements Builder {
     @Value(min = 0)
     private int numberOfParticipants;
 
+    @Value(min = 0)
+    private Integer singlesCount;
+
     @NotNull
     private MusicGenre genre;
- /*   @NotNull
-    private MpaaRating mpaaRating;
 
-  */
     @NotNull
     private Studio studio;
 
     @Override
     public Movie build() {
-        return new Movie(id, name, coordinates, creationDate, numberOfParticipants, genre, studio);
+        return new Movie(id, name, coordinates, creationDate, numberOfParticipants, singlesCount, genre, studio);
     }
 }

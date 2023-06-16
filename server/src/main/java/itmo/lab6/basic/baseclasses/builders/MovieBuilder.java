@@ -27,6 +27,9 @@ public class MovieBuilder implements Builder {
     @Value(min = 0)
     private int numberOfParticipants;
 
+    @Value(min = 0)
+    private Integer singlesCount;
+
     @NotNull
     private MusicGenre genre;
 
@@ -35,6 +38,6 @@ public class MovieBuilder implements Builder {
 
     @Override
     public Movie build() {
-        return new Movie(id, name, coordinates, creationDate, numberOfParticipants, genre, studio);
+        return new Movie(id, name, coordinates, creationDate, numberOfParticipants, singlesCount, genre, studio);
     }
 }
