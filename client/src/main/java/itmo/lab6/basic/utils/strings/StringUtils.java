@@ -6,7 +6,6 @@ import org.jetbrains.annotations.NotNull;
 /**
  * String utils class
  *
- * @author kxrxh
  */
 public final class StringUtils {
     /**

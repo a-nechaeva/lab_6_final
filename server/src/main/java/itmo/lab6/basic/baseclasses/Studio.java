@@ -6,14 +6,12 @@ import java.io.Serial;
 import java.io.Serializable;
 
 /**
- * The `Person` class implements `Serializable` interface and is used to store information about a person.
- * It has various instance variables to store the person's name, birthday, height, hair color, and location.
+ * The `Studio` class implements `Serializable` interface and is used to store information about a studio.
+ * It has various instance variables to store the studio's name.
  * The class provides constructors with different parameters and getters and setters for all the instance variables.
  * It also provides an implementation of the `toString()` method for convenient output.
  *
- * @author zxc nylon
- * @version 1.0
- * @since 1999
+
  */
 public class Studio implements Serializable {
     @Serial
@@ -21,15 +19,15 @@ public class Studio implements Serializable {
     private static final long serialVersionUID = 6529685098267757690L;
 
     /**
-     * The name of the person.
+     * The name of the studio.
      */
     private String name;
 
 
     /**
-     * Creates a new `Person` object with the specified parameter.
+     * Creates a new `Studio` object with the specified parameter.
      *
-     * @param name The name of the person.
+     * @param name The name of the studio.
      */
     public Studio(String name) {
         if (name == null || name.isEmpty()) throw new IllegalArgumentException("Can't be null or empty sequences.");
@@ -37,25 +35,25 @@ public class Studio implements Serializable {
     }
 
     /**
-     * Creates a new `Person` object with standard parameters.
+     * Creates a new `Studio` object with standard parameters.
      */
     public Studio() {
-        this.name = "Quentin Tarantino";
+        this.name = "Roses";
     }
 
     /**
-     * Returns the name of the person.
+     * Returns the name of the studio.
      *
-     * @return The name of the person.
+     * @return The name of the studio.
      */
     public String getName() {
         return name;
     }
 
     /**
-     * Sets the name of the person.
+     * Sets the name of the studio.
      *
-     * @param name The name of the person.
+     * @param name The name of the studio.
      */
     public void setName(String name) {
         this.name = name;

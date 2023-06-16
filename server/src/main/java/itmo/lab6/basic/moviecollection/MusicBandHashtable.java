@@ -7,13 +7,12 @@ import java.time.format.DateTimeFormatter;
 import java.util.Hashtable;
 
 /**
- * The abstract class {@code MusicBandHashtable} is a wrapper for the {@code HashMap} class.
- * It provides a set of methods for working with the {@code HashMap} class.
+ * The abstract class {@code MusicBandHashtable} is a wrapper for the {@code Hashtable} class.
+ * It provides a set of methods for working with the {@code Hashtable} class.
  * It is inherited by the {@code MovieCol} class.
  *
  * @param <K> the type of keys maintained by this map
  * @param <V> the type of mapped values
- * @author dorlneylon
  * @see MovieCollection
  */
 public abstract class MusicBandHashtable<K, V> {

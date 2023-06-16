@@ -76,7 +76,6 @@ public class UserInputParser extends AbstractParser {
                                 field.setAccessible(true);
                                 field.set(builderObject, innerObject);
                             } catch (IllegalAccessException ignored) {
-                                // it isn't possible, I guess...
                             }
                         }
                     }

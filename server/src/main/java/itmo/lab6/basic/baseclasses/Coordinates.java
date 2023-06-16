@@ -1,15 +1,11 @@
 package itmo.lab6.basic.baseclasses;
 
-import java.io.Serial;
 import java.io.Serializable;
 
 /**
  * The Coordinates class represents a pair of coordinates (x, y).
  * It implements the Serializable interface, allowing instances to be written to and read from streams.
  *
- * @author dorlneylon
- * @version 1.0?
- * @since ??.??.????
  */
 public class Coordinates implements Serializable {
     private float x;
@@ -32,7 +28,7 @@ public class Coordinates implements Serializable {
      */
     public Coordinates() {
         this.x = (float) (Math.random() * 1000 - 521);
-        this.y = (Double) (Math.random() * 256);
+        this.y = Math.random() * 256;
     }
 
     /**

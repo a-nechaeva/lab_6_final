@@ -3,7 +3,6 @@ package itmo.lab6.utils.string;
 /**
  * String utils class
  *
- * @author kxrxh
  */
 public final class StringUtils {
     /**

@@ -33,18 +33,18 @@
     </MusicBand>
     <MusicBand>
         <id>8</id>
-        <name>ghjk</name>
+        <name>hhhh</name>
         <Coordinates>
-            <x>5.0</x>
-            <y>7.0</y>
+            <x>2.0</x>
+            <y>3.0</y>
         </Coordinates>
-        <creation_date>2023-06-16T13:38:03.658566800+03:00[Europe/Moscow]</creation_date>
-        <number_of_participants>67</number_of_participants>
-        <singles_count>78</singles_count>
-        <establishment_date>12.04.2000</establishment_date>
-        <genre>RAP</genre>
+        <creation_date>2023-06-16T17:00:52.136098500+03:00[Europe/Moscow]</creation_date>
+        <number_of_participants>1</number_of_participants>
+        <singles_count>22</singles_count>
+        <establishment_date>13.09.2008</establishment_date>
+        <genre>BRIT_POP</genre>
         <Studio>
-            <name>ghj</name>
+            <name>ududu</name>
         </Studio>
     </MusicBand>
     <MusicBand>
@@ -93,6 +93,22 @@
         <genre>BRIT_POP</genre>
         <Studio>
             <name>ghj</name>
+        </Studio>
+    </MusicBand>
+    <MusicBand>
+        <id>11</id>
+        <name>dghdjd</name>
+        <Coordinates>
+            <x>7.0</x>
+            <y>8.0</y>
+        </Coordinates>
+        <creation_date>2023-06-16T17:00:12.096631600+03:00[Europe/Moscow]</creation_date>
+        <number_of_participants>12</number_of_participants>
+        <singles_count>12</singles_count>
+        <establishment_date>12.01.2007</establishment_date>
+        <genre>POST_ROCK</genre>
+        <Studio>
+            <name>qqqqqqqq</name>
         </Studio>
     </MusicBand>
 </MovieCollection>

@@ -19,9 +19,6 @@ import static itmo.lab6.utils.string.StringUtils.toSnakeCase;
 /**
  * Xml writer class. Used for writing to xml file
  *
- * @author kxrxh
- * @see Xml
- * @see XmlAction
  */
 public class XmlWriter extends XmlAction {
     private final BufferedOutputStream bufferedOutput;

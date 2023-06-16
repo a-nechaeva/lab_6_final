@@ -9,12 +9,9 @@ import java.time.format.DateTimeFormatter;
 import java.util.Date;
 
 /**
- * The `Movie` class represents a movie, which includes its name, creation date,
- * number of Oscars it won, genre, MPAA rating, and director.
+ * The `MusicBand` class represents a music band, which includes its name, creation date,
+ * number of participants, singles count, establishment date, genre and studio.
  *
- * @author dorlneylon
- * @version 99999999.9999999
- * @since 2023-02-02
  */
 public class MusicBand implements Comparable<MusicBand>, Serializable {
     @Serial
@@ -25,30 +22,30 @@ public class MusicBand implements Comparable<MusicBand>, Serializable {
     private static Long nextId = 1L;
 
     /**
-     * The unique ID of the movie.
+     * The unique ID of the music band.
      * Generates automatically, can't be null, greater than zero.
      */
     private Long id;
 
     /**
-     * The name of the movie. Can't be null and an empty sequence.
+     * The name of the music band. Can't be null and an empty sequence.
      */
     private String name;
 
     /**
-     * The coordinates of the movie. Can't be null
+     * The coordinates of the music band. Can't be null
      *
      * @see Coordinates
      */
     private Coordinates coordinates;
 
     /**
-     * The creation date of the movie. Generates automatically, can't be null.
+     * The creation date of the music band. Generates automatically, can't be null.
      */
     private java.time.ZonedDateTime creationDate;
 
     /**
-     * The number of participants won by the movie. Not negative.
+     * The number of participants won by the music band. Not negative.
      */
     private int numberOfParticipants;
 
@@ -61,30 +58,30 @@ public class MusicBand implements Comparable<MusicBand>, Serializable {
 
 
     /**
-     * The genre of the movie.
+     * The genre of the music.
      *
      * @see MusicGenre
      */
     private MusicGenre genre;
 
     /**
-     * The director of the movie. The field can't be null.
+     * The studio of the music band. The field can't be null.
      *
      * @see Studio
      */
     private Studio studio;
 
     /**
-     * Constructor to create a movie with the given parameters.
-     * Automatically sets the id and creation date for the movie.
+     * Constructor to create a music band with the given parameters.
+     * Automatically sets the id and creation date for the music band.
      *
-     * @param name        the name of the movie
-     * @param coordinates the coordinates of the movie
-     * @param numberOfParticipants the number of oscars won by the movie
+     * @param name        the name of the music band
+     * @param coordinates the coordinates of the music band
+     * @param numberOfParticipants the number of participants of the music band
      * @param singlesCount the number of singles
      * @param establishmentDate the date of establish
-     * @param genre       the genre of the movie
-     * @param studio    the director of the movie
+     * @param genre       the genre of the music
+     * @param studio    the studio of the music band
      * @see Studio
      * @see Coordinates
      * @see MusicGenre
@@ -104,18 +101,18 @@ public class MusicBand implements Comparable<MusicBand>, Serializable {
     }
 
     /**
-     * Constructs a `Movie` instance with the specified ID, name, coordinates, creation date,
-     * number of Oscars, genre, MPAA rating, and director.
+     * Constructs a `MusicBand` instance with the specified ID, its name, creation date,
+     * number of participants, singles count, establishment date, genre and studio.
      *
-     * @param id           the unique ID of the movie
-     * @param name         the name of the movie
-     * @param coordinates  the coordinates of the movie
-     * @param creationDate the creation date of the movie
+     * @param id           the unique ID of the music band
+     * @param name         the name of the music band
+     * @param coordinates  the coordinates of the music band
+     * @param creationDate the creation date of the music band
      * @param singlesCount the number of singles
      * @param numberOfParticipants  the number of participants
      * @param establishmentDate the date of establish
-     * @param genre        the genre of the movie
-     * @param studio     the director of the movie
+     * @param genre        the genre of the music
+     * @param studio     the studio of the music band
      * @see MusicBand#MusicBand(String name, Coordinates coordinates, int numberOfParticipants, Integer singlesCount, Date establishmentDate, MusicGenre genre, Studio studio)
      */
     public MusicBand(Long id, String name, Coordinates coordinates, java.time.ZonedDateTime creationDate, int numberOfParticipants, Integer singlesCount, Date establishmentDate, MusicGenre genre, Studio studio) {
@@ -135,17 +132,7 @@ public class MusicBand implements Comparable<MusicBand>, Serializable {
 
 
     /**
-     * @return the amount of Oscars won by the movie
-     * @see Movie#oscarsCount
-     */
-    /*public long oscarsCount() {
-        return oscarsCount;
-    }
-
-     */
-
-    /**
-     * @return the unique ID of the movie
+     * @return the unique ID of the music band
      * @see MusicBand#id
      * @see MusicBand#nextId
      */
@@ -154,20 +141,27 @@ public class MusicBand implements Comparable<MusicBand>, Serializable {
     }
 
     /**
-     * Used to set the ID of the movie.
+     * Used to set the ID of the music band
      */
     public void setId(Long id) {
         this.id = id;
     }
 
-
+    /**
+     * @return the establishment date of the music band
+     * @see MusicBand#establishmentDate
+     */
     public Date getEstablishmentDate() {return establishmentDate;}
+
+    /**
+     * Used to set the establishment date of the music band
+     */
     public void setEstablishmentDate(Date establishmentDate) {
         this.establishmentDate = establishmentDate;
     }
 
     /**
-     * @return the name of the movie
+     * @return the name of the music band
      * @see MusicBand#name
      */
     public String getName() {
@@ -175,14 +169,14 @@ public class MusicBand implements Comparable<MusicBand>, Serializable {
     }
 
     /**
-     * Used to set the name of the movie.
+     * Used to set the name of the music band
      */
     public void setName(String name) {
         this.name = name;
     }
 
     /**
-     * @return the coordinates of the movie
+     * @return the coordinates of the music band
      * @see MusicBand#coordinates
      */
     public Coordinates getCoordinates() {
@@ -190,7 +184,7 @@ public class MusicBand implements Comparable<MusicBand>, Serializable {
     }
 
     /**
-     * Used to set the coordinates of the movie.
+     * Used to set the coordinates of the music band
      *
      * @see Coordinates
      */
@@ -199,7 +193,7 @@ public class MusicBand implements Comparable<MusicBand>, Serializable {
     }
 
     /**
-     * @return the creation date of the movie
+     * @return the creation date of the music band
      * @see MusicBand#creationDate
      */
     public java.time.ZonedDateTime getCreationDate() {
@@ -207,14 +201,14 @@ public class MusicBand implements Comparable<MusicBand>, Serializable {
     }
 
     /**
-     * Used to set the creation date of the movie.
+     * Used to set the creation date of the music band
      */
     public void setCreationDate(java.time.ZonedDateTime creationDate) {
         this.creationDate = creationDate;
     }
 
     /**
-     * @return the genre of the movie
+     * @return the genre of the music band
      * @see MusicBand#genre
      */
     public MusicGenre getGenre() {
@@ -222,7 +216,7 @@ public class MusicBand implements Comparable<MusicBand>, Serializable {
     }
 
     /**
-     * Used to set the genre of the movie.
+     * Used to set the genre of the music band
      *
      * @see MusicBand#genre
      * @see MusicGenre
@@ -232,7 +226,7 @@ public class MusicBand implements Comparable<MusicBand>, Serializable {
     }
 
     /**
-     * @return the director of the movie
+     * @return the director of the music band
      * @see MusicBand#studio
      * @see Studio
      */
@@ -241,7 +235,7 @@ public class MusicBand implements Comparable<MusicBand>, Serializable {
     }
 
     /**
-     * Used to set the director of the movie.
+     * Used to set the studio of the music band
      *
      * @see MusicBand#studio
      * @see Studio
@@ -250,12 +244,19 @@ public class MusicBand implements Comparable<MusicBand>, Serializable {
         this.studio = studio;
     }
 
-
+    /**
+     * @return the number of participants of the music band
+     * @see MusicBand#numberOfParticipants
+     */
    // @Deprecated
     public int getNumberOfParticipants() {
         return numberOfParticipants;
     }
 
+    /**
+     * @return the number of singles of the music band
+     * @see MusicBand#singlesCount
+     */
     public Integer getSinglesCount() {
         return singlesCount;
     }
@@ -265,7 +266,7 @@ public class MusicBand implements Comparable<MusicBand>, Serializable {
     }
 
     /**
-     * Used to set the amount of Oscars won by the movie.
+     * Used to set the number of participants of the music band.
      *
      * @param numberOfParticipants
      * @see MusicBand#numberOfParticipants
@@ -274,31 +275,13 @@ public class MusicBand implements Comparable<MusicBand>, Serializable {
         this.numberOfParticipants = numberOfParticipants;
     }
 
-    /**
-     * @return the amount of Oscars won by the movie as an integer.
-   //  * @see Movie#oscarsCount()
-   //  * @see MpaaRating
-     */
-  /*  public int getOscarsInt() {
-        return (int) oscarsCount;
-    }
-
-   */
-
-
-//	/**
-//	 * Used to compare ids.
-//	 */
-//	public int compareTo(Movie movie) {
-//		return this.id.compareTo(movie.id);
-//	}
 
     public Object[] getFields() {
         return new Object[]{id, name, coordinates, creationDate, numberOfParticipants, genre, studio};
     }
 
     /**
-     * Used to compare movies.
+     * Used to compare music bands.
      */
     @Override
     public int compareTo(MusicBand musicBand) {
@@ -306,7 +289,7 @@ public class MusicBand implements Comparable<MusicBand>, Serializable {
     }
 
     /**
-     * Used see if two movies are set on the same position.
+     * Used see if two music bands are the same.
      */
     public boolean equals(MusicBand musicBand) {
         return coordinates.equals(musicBand.getCoordinates()) && name.equals(musicBand.getName()) && numberOfParticipants == musicBand.getNumberOfParticipants() && genre == musicBand.getGenre() &&  studio.equals(musicBand.getStudio());

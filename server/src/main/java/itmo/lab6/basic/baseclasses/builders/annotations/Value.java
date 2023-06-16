@@ -12,5 +12,4 @@ public @interface Value {
     double min() default Double.NEGATIVE_INFINITY;
 
     double max() default Double.POSITIVE_INFINITY;
-    // TODO: добавить какую-нибудь проверку строгости для неравенств
 }

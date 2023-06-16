@@ -5,14 +5,11 @@ import java.io.Serial;
 import java.io.Serializable;
 
 /**
- * The `Studio` class implements `Serializable` interface and is used to store information about a person.
- * It has various instance variables to store the person's name, birthday, height, hair color, and location.
+ * The `Studio` class implements `Serializable` interface and is used to store information about a studio.
+ * It has various instance variables to store the studio's name.
  * The class provides constructors with different parameters and getters and setters for all the instance variables.
  * It also provides an implementation of the `toString()` method for convenient output.
  *
- * @author zxc nylon
- * @version 1.0
- * @since 1999
  */
 public class Studio implements Serializable {
 	@Serial
@@ -55,7 +52,7 @@ public class Studio implements Serializable {
 
 	public Studio(String name) {
 		if (name == null || name.isEmpty())
-			throw new IllegalArgumentException("Can't be null or empty sequences.");
+			throw new IllegalArgumentException("Can't be null or empty string.");
 		this.name = name;
 	}
 

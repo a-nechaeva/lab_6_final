@@ -7,7 +7,6 @@ import java.util.concurrent.atomic.AtomicLong;
 /**
  * IdGenerator class. Used to generate unique ids.
  *
- * @author kxrxh
  */
 public final class IdGenerator {
     /**

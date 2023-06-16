@@ -72,23 +72,7 @@ public final class CommandFactory {
                     yield null;
                 }
             }
-          /*  case REMOVE_ALL_BY_MPAA_RATING -> {
-                if (args.length < 1) {
-                    System.err.println("Not enough arguments for command " + type.name());
-                    yield null;
-                }
-                try {
-                    MpaaRating rating = Convertible.convert(args[0], MpaaRating.class);
-                    if (rating == null) {
-                        System.err.println("Invalid MPAA rating. List of available MPAA ratings: " + Arrays.toString(MpaaRating.class.getEnumConstants()));
-                        yield null;
-                    }
-                    yield new Command(type, rating);
-                } catch (IllegalArgumentException e) {
-                    System.err.println("Invalid argument for command " + type.name());
-                    yield null;
-                }
-            } */
+
             case INSERT, UPDATE, REPLACE_IF_LOWER -> {
                 MusicBand musicBand = null;
                 if (args.length == 1) {

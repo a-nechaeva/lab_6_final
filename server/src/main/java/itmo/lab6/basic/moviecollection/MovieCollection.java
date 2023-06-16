@@ -11,11 +11,8 @@ import java.util.stream.Collectors;
  * The MovieCol class is a collection based on HashMap that extends the MusicBandHashtable class.
  * This class contains instance variables used to store information about movies.
  *
- * @author dorlneylon
- * @version 1.0?
  * @see MusicBandHashtable
  * @see MusicBand
- * @since 03.02.2023
  */
 public class MovieCollection extends MusicBandHashtable<Long, MusicBand> {
     /**
@@ -35,7 +32,7 @@ public class MovieCollection extends MusicBandHashtable<Long, MusicBand> {
     }
 
     /**
-     * removes all elements with higher oscarsCount than given key from the collection.
+     * removes all elements with higher number of participants than given key from the collection.
      *
      * @param key the key to compare with.
      */
@@ -55,7 +52,7 @@ public class MovieCollection extends MusicBandHashtable<Long, MusicBand> {
     }
 
     /**
-     * sorts the elements of the collection by the number of Oscars received and prints them in a new order.
+     * sorts the elements of the collection by the number of participants received and prints them in a new order.
      *
      * @see MusicBand
      */
@@ -66,7 +63,7 @@ public class MovieCollection extends MusicBandHashtable<Long, MusicBand> {
     }
 
     /**
-     * sorts the elements of the collection by the number of Oscars received in a reversed order and prints them.
+     * sorts the elements of the collection by the number of participants received in a reversed order and prints them.
      *
      * @see MusicBand
      */
@@ -100,7 +97,7 @@ public class MovieCollection extends MusicBandHashtable<Long, MusicBand> {
     }
 
     /**
-     * swap the elements if the provided elements has less Oscars than the element in the collection
+     * swap the elements if the provided elements has less number of participants than the element in the collection
      *
      * @param key   the key of the element in the collection
      * @param musicBand the element to compare with
