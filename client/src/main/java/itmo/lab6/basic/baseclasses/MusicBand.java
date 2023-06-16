@@ -351,7 +351,7 @@ public class MusicBand implements Comparable<MusicBand>, Serializable {
 			+ prcr + "Creation Date: " + whcr + creationDate.format(DateTimeFormatter.ofPattern("dd.MM.yyyy")) + ",\n"
 			+ prcr + "Number of Participants: " + whcr + numberOfParticipants + ",\n"
 			+ prcr + "Singles Count: " + whcr + singlesCount + ",\n"
-			+ prcr +"Establishment Date = " + establishmentDate + ",\n"
+			+ prcr +"Establishment Date: " + whcr + establishmentDate + ",\n"
 			+ prcr + "Genre: " + whcr + genre + ",\n"
 			+ prcr + "\n" + studio.toString();
 	}

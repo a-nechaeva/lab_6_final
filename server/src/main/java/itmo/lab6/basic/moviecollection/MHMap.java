@@ -214,10 +214,12 @@ public abstract class MHMap<K, V> {
      * elements' type, date of initialization, number of elements, etc.
      */
     public String info() {
-        Class<?> a = this.map.isEmpty() ? null : this.map.entrySet().stream().toList().get(0).getKey().getClass();
-        String keyTypeName = a == null ? "none" : a.getName();
-        return "Type: " + this.getClass().getName() + "\n"
-                + "Key type: " + keyTypeName + "\n"
+      //  Class<?> a = this.map.isEmpty() ? null : this.map.entrySet().stream().toList().get(0).getKey().getClass();
+    //    String keyTypeName = a == null ? "none" : a.getName();
+      //  return "Type: " + this.getClass().getName() + "\n"
+        return "Type: " + "MusicBandCollection (Hashtable)" + "\n"
+              //  + "Key type: " + keyTypeName + "\n"
+                + "Key type: " + "java.lang.Long" + "\n"
                 + "Date of initialization: " + this.getInitDate().format(DateTimeFormatter.ofPattern("dd.MM.yyyy")) + "\n"
                 + "Number of elements: " + this.size();
     }

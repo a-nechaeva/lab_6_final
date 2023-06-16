@@ -1,18 +1,18 @@
 <MovieCollection>
     <MusicBand>
         <id>5</id>
-        <name>ghj</name>
+        <name>ghjk</name>
         <Coordinates>
             <x>2.0</x>
-            <y>4.0</y>
+            <y>3.0</y>
         </Coordinates>
-        <creation_date>2023-06-16T13:38:46.489846+03:00[Europe/Moscow]</creation_date>
+        <creation_date>2023-06-16T14:49:57.789549500+03:00[Europe/Moscow]</creation_date>
         <number_of_participants>12</number_of_participants>
-        <singles_count>2</singles_count>
+        <singles_count>3</singles_count>
         <establishment_date>12.09.2000</establishment_date>
-        <genre>POST_ROCK</genre>
+        <genre>BRIT_POP</genre>
         <Studio>
-            <name>hjk</name>
+            <name>ghj</name>
         </Studio>
     </MusicBand>
     <MusicBand>
