@@ -1,16 +1,15 @@
 package itmo.lab6.basic.baseclasses.builders;
 
 import itmo.lab6.basic.baseclasses.Coordinates;
-import itmo.lab6.basic.baseclasses.Movie;
+import itmo.lab6.basic.baseclasses.MusicBand;
 import itmo.lab6.basic.baseclasses.Studio;
 import itmo.lab6.basic.baseclasses.builders.annotations.Generated;
 import itmo.lab6.basic.baseclasses.builders.annotations.NotEmpty;
 import itmo.lab6.basic.baseclasses.builders.annotations.NotNull;
 import itmo.lab6.basic.baseclasses.builders.annotations.Value;
 import itmo.lab6.basic.baseenums.MusicGenre;
-import itmo.lab6.basic.baseenums.MpaaRating;
 
-public class MovieBuilder implements Builder {
+public class MusicBandBuilder implements Builder {
     @NotNull
     @Value(min = 0)
     private Long id;
@@ -39,7 +38,7 @@ public class MovieBuilder implements Builder {
     private Studio studio;
 
     @Override
-    public Movie build() {
-        return new Movie(id, name, coordinates, creationDate, numberOfParticipants, singlesCount, establishmentDate, genre, studio);
+    public MusicBand build() {
+        return new MusicBand(id, name, coordinates, creationDate, numberOfParticipants, singlesCount, establishmentDate, genre, studio);
     }
 }

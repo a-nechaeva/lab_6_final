@@ -1,8 +1,7 @@
 package itmo.lab6.basic.moviecollection;
 
-import itmo.lab6.basic.baseclasses.Movie;
+import itmo.lab6.basic.baseclasses.MusicBand;
 import itmo.lab6.basic.baseclasses.Studio;
-import itmo.lab6.basic.baseenums.MpaaRating;
 
 import java.util.Arrays;
 import java.util.Comparator;
@@ -15,10 +14,10 @@ import java.util.stream.Collectors;
  * @author dorlneylon
  * @version 1.0?
  * @see MHMap
- * @see Movie
+ * @see MusicBand
  * @since 03.02.2023
  */
-public class MovieCollection extends MHMap<Long, Movie> {
+public class MovieCollection extends MHMap<Long, MusicBand> {
     /**
      * Instantiates a new MovieCol object.
      */
@@ -28,11 +27,11 @@ public class MovieCollection extends MHMap<Long, Movie> {
     /**
      * prints the collection elements and its contents to the console
      *
-     * @see Movie
+     * @see MusicBand
      * @see Studio
      */
     public String show() {
-        return Arrays.stream(this.values()).map(Movie::toString).collect(Collectors.joining("\n"));
+        return Arrays.stream(this.values()).map(MusicBand::toString).collect(Collectors.joining("\n"));
     }
 
     /**
@@ -42,14 +41,14 @@ public class MovieCollection extends MHMap<Long, Movie> {
      */
     public boolean removeGreater(Long key) {
         return Arrays.stream(this.values())
-                .filter(movie -> movie.getNumberOfParticipants() > key)
+                .filter(musicBand -> musicBand.getNumberOfParticipants() > key)
                 .map(movie -> this.removeByKey(movie.getId()))
                 .reduce(false, (a, b) -> a || b);
     }
 
     public boolean equals(MovieCollection map) {
-        Movie[] a = this.values();
-        Movie[] b = map.values();
+        MusicBand[] a = this.values();
+        MusicBand[] b = map.values();
         if (a.length != b.length) return false;
         for (int i = 0; i < a.length; i++) if (!a[i].equals(b[i])) return false;
         return true;
@@ -58,58 +57,58 @@ public class MovieCollection extends MHMap<Long, Movie> {
     /**
      * sorts the elements of the collection by the number of Oscars received and prints them in a new order.
      *
-     * @see Movie
+     * @see MusicBand
      */
     @Override
     public String printAscending() {
-        Movie[] movies = getSortedMovies(false);
-        return Arrays.stream(movies).map(Object::toString).collect(Collectors.joining("\n"));
+        MusicBand[] musicBands = getSortedMovies(false);
+        return Arrays.stream(musicBands).map(Object::toString).collect(Collectors.joining("\n"));
     }
 
     /**
      * sorts the elements of the collection by the number of Oscars received in a reversed order and prints them.
      *
-     * @see Movie
+     * @see MusicBand
      */
     @Override
     public String printDescending() {
-        Movie[] movies = getSortedMovies(true);
-        return Arrays.stream(movies).map(Object::toString).collect(Collectors.joining("\n"));
+        MusicBand[] musicBands = getSortedMovies(true);
+        return Arrays.stream(musicBands).map(Object::toString).collect(Collectors.joining("\n"));
     }
 
     /**
      * get the id of the element in the collection
      *
-     * @param movie the element to get the id of
+     * @param musicBand the element to get the id of
      * @return the id of the element or -1 if the element is not in the collection
-     * @see Movie
+     * @see MusicBand
      */
     @Override
-    public Long getKey(Movie movie) {
-        return movie.getId();
+    public Long getKey(MusicBand musicBand) {
+        return musicBand.getId();
     }
 
     /**
      * get the elements of the collection
      *
-     * @return Movie[]
-     * @see Movie
+     * @return MusicBand[]
+     * @see MusicBand
      */
     @Override
-    public Movie[] values() {
-        return this.getMap().values().toArray(new Movie[this.size()]);
+    public MusicBand[] values() {
+        return this.getMap().values().toArray(new MusicBand[this.size()]);
     }
 
     /**
      * swap the elements if the provided elements has less Oscars than the element in the collection
      *
      * @param key   the key of the element in the collection
-     * @param movie the element to compare with
+     * @param musicBand the element to compare with
      * @return true if the elements are swapped, false otherwise
      */
-    public boolean replaceLower(Long key, Movie movie) {
-        if (movie.getNumberOfParticipants() < this.get(key).getNumberOfParticipants()) {
-            this.update(key, movie);
+    public boolean replaceLower(Long key, MusicBand musicBand) {
+        if (musicBand.getNumberOfParticipants() < this.get(key).getNumberOfParticipants()) {
+            this.update(key, musicBand);
             return true;
         }
         return false;
@@ -118,13 +117,13 @@ public class MovieCollection extends MHMap<Long, Movie> {
     /**
      * check if the collection contains such an element.
      *
-     * @param movie the element to check
+     * @param musicBand the element to check
      * @return true if the element is in the collection, false otherwise
-     * @see Movie
+     * @see MusicBand
      */
     @Override
-    public boolean contains(Movie movie) {
-        return this.getMap().containsValue(movie);
+    public boolean contains(MusicBand musicBand) {
+        return this.getMap().containsValue(musicBand);
     }
 
     /**
@@ -138,10 +137,10 @@ public class MovieCollection extends MHMap<Long, Movie> {
     }
 
     @Override
-    public Movie[] getSortedMovies(boolean reverse) {
-        Movie[] movies = this.values();
-        Arrays.sort(movies, (reverse) ? Comparator.reverseOrder() : Comparator.naturalOrder());
-        return movies;
+    public MusicBand[] getSortedMovies(boolean reverse) {
+        MusicBand[] musicBands = this.values();
+        Arrays.sort(musicBands, (reverse) ? Comparator.reverseOrder() : Comparator.naturalOrder());
+        return musicBands;
     }
 
     /**

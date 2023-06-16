@@ -1,5 +1,5 @@
 <MovieCollection>
-    <Movie>
+    <MusicBand>
         <id>5</id>
         <name>fd</name>
         <Coordinates>
@@ -14,8 +14,8 @@
         <Studio>
             <name> jh </name>
         </Studio>
-    </Movie>
-    <Movie>
+    </MusicBand>
+    <MusicBand>
         <id>6</id>
         <name>fd</name>
         <Coordinates>
@@ -30,8 +30,8 @@
         <Studio>
             <name> jh </name>
         </Studio>
-    </Movie>
-    <Movie>
+    </MusicBand>
+    <MusicBand>
         <id>7</id>
         <name>fd</name>
         <Coordinates>
@@ -46,5 +46,5 @@
         <Studio>
             <name> jh </name>
         </Studio>
-    </Movie>
+    </MusicBand>
 </MovieCollection>

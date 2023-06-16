@@ -15,7 +15,7 @@ import java.time.format.DateTimeFormatter;
  * @version 99999999.9999999
  * @since 2023-02-02
  */
-public class Movie implements Comparable<Movie>, Serializable {
+public class MusicBand implements Comparable<MusicBand>, Serializable {
 	@Serial
 	private static final long serialVersionUID = 6529685098267757690L;
 	/**
@@ -98,7 +98,7 @@ public class Movie implements Comparable<Movie>, Serializable {
 	 * @see MusicGenre
 	// * @see MpaaRating
 	 */
-	public Movie(String name, Coordinates coordinates, int numberOfParticipants, Integer singlesCount, java.time.LocalDate establishmentDate, MusicGenre genre, Studio studio) {
+	public MusicBand(String name, Coordinates coordinates, int numberOfParticipants, Integer singlesCount, java.time.LocalDate establishmentDate, MusicGenre genre, Studio studio) {
 		if (name == null || name.isEmpty() || coordinates == null  || numberOfParticipants < 0 || genre == null || studio == null) throw new IllegalArgumentException("The fields can't be null or empty sequences.");
 		this.id = nextId++;
 		this.name = name;
@@ -111,7 +111,7 @@ public class Movie implements Comparable<Movie>, Serializable {
 		this.creationDate = java.time.ZonedDateTime.now();
 	}
 
-	public Movie(Long id, String name, Coordinates coordinates, int numberOfParticipants, Integer singlesCount,  java.time.LocalDate establishmentDate, MusicGenre genre, Studio studio) {
+	public MusicBand(Long id, String name, Coordinates coordinates, int numberOfParticipants, Integer singlesCount,  java.time.LocalDate establishmentDate, MusicGenre genre, Studio studio) {
 		if (name == null || name.isEmpty() || coordinates == null ||  numberOfParticipants < 0 || genre == null || studio == null) throw new IllegalArgumentException("The fields can't be null or empty sequences.");
 		this.id = id;
 		this.name = name;
@@ -137,9 +137,9 @@ public class Movie implements Comparable<Movie>, Serializable {
 	 * @param establishmentDate the date of establish
 	 * @param genre the genre of the movie
 	 * @param studio the director of the movie
-	 * @see Movie#Movie(String name, Coordinates coordinates, int numberOfParticipants, Integer singlesCount, java.time.LocalDate establishmentDate, MusicGenre genre, Studio studio)
+	 * @see MusicBand#MusicBand(String name, Coordinates coordinates, int numberOfParticipants, Integer singlesCount, java.time.LocalDate establishmentDate, MusicGenre genre, Studio studio)
 	 */
-	public Movie(Long id, String name, Coordinates coordinates, java.time.ZonedDateTime creationDate, int numberOfParticipants, Integer singlesCount, java.time.LocalDate establishmentDate, MusicGenre genre, Studio studio) {
+	public MusicBand(Long id, String name, Coordinates coordinates, java.time.ZonedDateTime creationDate, int numberOfParticipants, Integer singlesCount, java.time.LocalDate establishmentDate, MusicGenre genre, Studio studio) {
 		if (name == null || name.isEmpty() || coordinates == null || numberOfParticipants < 0 || genre == null  || studio == null) throw new IllegalArgumentException("The fields can't be null or empty sequences.");
 		nextId++;
 		this.id = id;
@@ -157,9 +157,9 @@ public class Movie implements Comparable<Movie>, Serializable {
 	 * Constructs a `Movie` instance with the specified name, and random values for the other attributes.
 	 *
 	 * @param name the name of the movie
-	 * @see Movie#Movie(String name, Coordinates coordinates, int numberOfParticipants, Integer singlesCount, java.time.LocalDate establishmentDate, MusicGenre genre, Studio studio)
+	 * @see MusicBand#MusicBand(String name, Coordinates coordinates, int numberOfParticipants, Integer singlesCount, java.time.LocalDate establishmentDate, MusicGenre genre, Studio studio)
 	 */
-	public Movie(String name) {
+	public MusicBand(String name) {
 		this.id = nextId++;
 		this.name = name;
 		this.creationDate = java.time.ZonedDateTime.now();
@@ -173,9 +173,9 @@ public class Movie implements Comparable<Movie>, Serializable {
 
 	/**
 	 * Constructs a `Movie` instance with default values for all attributes.
-	 * @see Movie#Movie(String name, Coordinates coordinates, int numberOfParticipants, Integer singlesCount, java.time.LocalDate establishmentDate, MusicGenre genre, Studio studio)
+	 * @see MusicBand#MusicBand(String name, Coordinates coordinates, int numberOfParticipants, Integer singlesCount, java.time.LocalDate establishmentDate, MusicGenre genre, Studio studio)
 	 */
-	public Movie() {}
+	public MusicBand() {}
 
 	public java.time.LocalDate getEstablishmentDate() {return establishmentDate;}
 	public void setEstablishmentDate(java.time.LocalDate establishmentDate) {
@@ -184,8 +184,8 @@ public class Movie implements Comparable<Movie>, Serializable {
 
 	/**
 	 * @return the unique ID of the movie
-	 * @see Movie#id
-	 * @see Movie#nextId
+	 * @see MusicBand#id
+	 * @see MusicBand#nextId
 	 */
 	public Long getId() {
 		return id;
@@ -193,7 +193,7 @@ public class Movie implements Comparable<Movie>, Serializable {
 
 	/**
 	 * @return the name of the movie
-	 * @see Movie#name
+	 * @see MusicBand#name
 	 */
 	public String getName() {
 		return name;
@@ -201,7 +201,7 @@ public class Movie implements Comparable<Movie>, Serializable {
 
 	/**
 	 * @return the coordinates of the movie
-	 * @see Movie#coordinates
+	 * @see MusicBand#coordinates
 	 */
 	public Coordinates getCoordinates() {
 		return coordinates;
@@ -209,7 +209,7 @@ public class Movie implements Comparable<Movie>, Serializable {
 
 	/**
 	 * @return the creation date of the movie
-	 * @see Movie#creationDate
+	 * @see MusicBand#creationDate
 	 */
 	public java.time.ZonedDateTime getCreationDate() {
 		return creationDate;
@@ -217,7 +217,7 @@ public class Movie implements Comparable<Movie>, Serializable {
 
 	/**
 	 * @return the genre of the movie
-	 * @see Movie#genre
+	 * @see MusicBand#genre
 	 */
 	public MusicGenre getGenre() {
 		return genre;
@@ -225,7 +225,7 @@ public class Movie implements Comparable<Movie>, Serializable {
 
 	/**
 	 * @return the director of the movie
-	 * @see Movie#studio
+	 * @see MusicBand#studio
 	 * @see Studio
 	 */
 	public Studio getStudio() {
@@ -268,7 +268,7 @@ public class Movie implements Comparable<Movie>, Serializable {
 	/**
 	 * Used to set the amount of Oscars won by the movie.
 	 * @param numberOfParticipants
-	 * @see Movie#numberOfParticipants
+	 * @see MusicBand#numberOfParticipants
 	 */
 	public void setNumberOfParticipants(int numberOfParticipants) {
 		this.numberOfParticipants = numberOfParticipants;
@@ -280,7 +280,7 @@ public class Movie implements Comparable<Movie>, Serializable {
 
 	/**
 	 * Used to set the genre of the movie.
-	 * @see Movie#genre
+	 * @see MusicBand#genre
 	 * @see MusicGenre
 	 */
 	public void setGenre(MusicGenre genre) {
@@ -290,7 +290,7 @@ public class Movie implements Comparable<Movie>, Serializable {
 
 	/**
 	 * Used to set the director of the movie.
-	 * @see Movie#studio
+	 * @see MusicBand#studio
 	 * @see Studio
 	 */
 	public void setStudio(Studio studio) {
@@ -326,14 +326,16 @@ public class Movie implements Comparable<Movie>, Serializable {
 	 * Used to compare movies.
 	 */
 	@Override
-	public int compareTo(Movie movie) {  return (int) (this.getNumberOfParticipants() - movie.getNumberOfParticipants()); }
+	public int compareTo(MusicBand musicBand) {  return (int) (this.getNumberOfParticipants() - musicBand.getNumberOfParticipants()); }
 
 
 	/**
 	 * Used see if two movies are set on the same position.
 	 */
-	public boolean equals(Movie movie) {
-		return coordinates.equals(movie.getCoordinates()) && name.equals(movie.getName()) && numberOfParticipants == movie.getNumberOfParticipants() && genre == movie.getGenre() && studio.equals(movie.getStudio());
+	public boolean equals(MusicBand musicBand) {
+		return coordinates.equals(musicBand.getCoordinates()) && name.equals(musicBand.getName())
+				&& numberOfParticipants == musicBand.getNumberOfParticipants() && genre == musicBand.getGenre()
+				&& studio.equals(musicBand.getStudio());
 	}
 
 	/**

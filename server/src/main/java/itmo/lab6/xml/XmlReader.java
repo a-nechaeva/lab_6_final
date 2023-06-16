@@ -1,7 +1,7 @@
 package itmo.lab6.xml;
 
 
-import itmo.lab6.basic.baseclasses.Movie;
+import itmo.lab6.basic.baseclasses.MusicBand;
 import itmo.lab6.basic.baseclasses.builders.Builder;
 import itmo.lab6.basic.moviecollection.MovieCollection;
 import itmo.lab6.server.ServerLogger;
@@ -39,11 +39,11 @@ public class XmlReader extends XmlAction {
         movieCollection = readXML(xml.getXmlFile());
         // Checking product uniqueness
         if (movieCollection.size() > 1) {
-            for (Movie movie : movieCollection.values()) {
-                if (Arrays.stream(movieCollection.values()).anyMatch(p -> Objects.equals(p.getId(), movie.getId()) && p != movie)) {
-                    ServerLogger.getLogger().warning("WARNING: Movie with id " + movie.getId() + " already exists");
+            for (MusicBand musicBand : movieCollection.values()) {
+                if (Arrays.stream(movieCollection.values()).anyMatch(p -> Objects.equals(p.getId(), musicBand.getId()) && p != musicBand)) {
+                    ServerLogger.getLogger().warning("WARNING: Movie with id " + musicBand.getId() + " already exists");
                     ServerLogger.getLogger().warning("%Removing duplicates...");
-                    movieCollection.removeByKey(movie.getId());
+                    movieCollection.removeByKey(musicBand.getId());
                 }
             }
         }
@@ -72,15 +72,15 @@ public class XmlReader extends XmlAction {
         for (int i = 0; i < rootTree.getLength(); i++) {
             Node node = rootTree.item(i);
             // Getting only Products
-            if (node.getNodeName().equals("Movie")) {
-                Movie movie;
+            if (node.getNodeName().equals("MusicBand")) {
+                MusicBand musicBand;
                 try {
-                    movie = (Movie) parseItem(node);
+                    musicBand = (MusicBand) parseItem(node);
                 } catch (ClassNotFoundException e) {
                     ServerLogger.getLogger().warning(e.getMessage());
                     continue;
                 }
-                movieCollection.insert(movie);
+                movieCollection.insert(musicBand);
             }
         }
         return movieCollection;

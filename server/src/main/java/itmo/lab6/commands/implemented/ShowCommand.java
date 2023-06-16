@@ -1,6 +1,6 @@
 package itmo.lab6.commands.implemented;
 
-import itmo.lab6.basic.baseclasses.Movie;
+import itmo.lab6.basic.baseclasses.MusicBand;
 import itmo.lab6.commands.Action;
 import itmo.lab6.server.response.MessagePainter;
 import itmo.lab6.server.response.Response;
@@ -16,7 +16,7 @@ public class ShowCommand implements Action {
     @Override
     public Response run() {
         return new Response(MessagePainter.ColoredInfoMessage(
-                Arrays.stream(collection.values()).map(Movie::toString).collect(Collectors.joining("\n"))
+                Arrays.stream(collection.values()).map(MusicBand::toString).collect(Collectors.joining("\n"))
         ), ResponseType.INFO);
     }
 }

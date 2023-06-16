@@ -1,6 +1,6 @@
 package itmo.lab6.commands;
 
-import itmo.lab6.basic.baseclasses.Movie;
+import itmo.lab6.basic.baseclasses.MusicBand;
 import itmo.lab6.basic.utils.files.FileUtils;
 import itmo.lab6.basic.utils.files.ScriptExecutor;
 import itmo.lab6.basic.utils.parser.ArgumentParser;
@@ -90,13 +90,13 @@ public final class CommandFactory {
                 }
             } */
             case INSERT, UPDATE, REPLACE_IF_LOWER -> {
-                Movie movie = null;
+                MusicBand musicBand = null;
                 if (args.length == 1) {
-                    movie = parseMovie(type, args);
+                    musicBand = parseMovie(type, args);
                 } else if (args.length >= 2) {
-                    movie = parseMovie(type, new String[]{args[0]}, Arrays.copyOfRange(args, 1, args.length));
+                    musicBand = parseMovie(type, new String[]{args[0]}, Arrays.copyOfRange(args, 1, args.length));
                 }
-                if (movie != null) yield new Command(type, movie);
+                if (musicBand != null) yield new Command(type, musicBand);
                 yield null;
             }
             // DEFAULT command
@@ -114,12 +114,12 @@ public final class CommandFactory {
      * @param args command arguments
      * @return read movie from console
      */
-    public static Movie parseMovie(CommandType type, String[] args) {
+    public static MusicBand parseMovie(CommandType type, String[] args) {
         if (Boolean.FALSE.equals(isMovieValid(type, args))) return null;
 
-        Movie movie = new UserInputParser().readObject(Movie.class);
-        Objects.requireNonNull(movie).setId(Long.parseLong(args[0]));
-        return movie;
+        MusicBand musicBand = new UserInputParser().readObject(MusicBand.class);
+        Objects.requireNonNull(musicBand).setId(Long.parseLong(args[0]));
+        return musicBand;
     }
 
     /**
@@ -129,11 +129,11 @@ public final class CommandFactory {
      * @param movieArgs movie args
      * @return read movie from file
      */
-    public static Movie parseMovie(CommandType type, String[] args, String[] movieArgs) {
+    public static MusicBand parseMovie(CommandType type, String[] args, String[] movieArgs) {
         // if (Boolean.FALSE.equals(isMovieValid(type, args))) return null;
-        Movie movie = null;
+        MusicBand movie = null;
         try {
-            movie = new ArgumentParser(movieArgs).readObject(Movie.class);
+            movie = new ArgumentParser(movieArgs).readObject(MusicBand.class);
             Objects.requireNonNull(movie).setId(Long.parseLong(args[0]));
         } catch (ObjectParsingException e) {
             System.err.println("Error parsing: " + e.getMessage());

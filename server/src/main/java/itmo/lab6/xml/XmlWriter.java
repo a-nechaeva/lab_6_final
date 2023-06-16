@@ -1,7 +1,7 @@
 package itmo.lab6.xml;
 
 
-import itmo.lab6.basic.baseclasses.Movie;
+import itmo.lab6.basic.baseclasses.MusicBand;
 import itmo.lab6.basic.baseclasses.builders.annotations.Generated;
 import itmo.lab6.basic.moviecollection.MovieCollection;
 
@@ -60,8 +60,8 @@ public class XmlWriter extends XmlAction {
     public void writeCollection(MovieCollection collection) {
         writeLine(indentString() + "<" + collection.getClass().getSimpleName() + ">");
         indentLevel++;
-        for (Movie movie : collection.values()) {
-            writeObject(movie);
+        for (MusicBand musicBand : collection.values()) {
+            writeObject(musicBand);
         }
         indentLevel--;
         writeLine(indentString() + "</" + collection.getClass().getSimpleName() + ">");
@@ -80,7 +80,7 @@ public class XmlWriter extends XmlAction {
         Arrays.stream(object.getClass().getDeclaredFields()).filter(a -> !a.isAnnotationPresent(Generated.class)).forEach(field -> {
             field.setAccessible(true);
             try {
-                if (List.of("location", "coordinates", "movie", "studio").contains(field.getType().getSimpleName().toLowerCase())) {
+                if (List.of("location", "coordinates", "music_band", "studio").contains(field.getType().getSimpleName().toLowerCase())) {
                     writeObject(field.get(object));
                 } else if (field.getType().getSimpleName().equals("Date")) {
                     Date date = (Date) field.get(object);
