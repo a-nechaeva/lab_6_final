@@ -346,8 +346,8 @@ public class MusicBand implements Comparable<MusicBand>, Serializable {
 	 */
 	public String toString() {
 		String establishmentDate = new java.text.SimpleDateFormat("dd.MM.yyyy").format(this.establishmentDate);
-		return id + ".\n" + prcr + "Film's title: " + whcr + name + ",\n"
-			+ prcr + "Film's coords: " + whcr + coordinates + ",\n"
+		return id + ".\n" + prcr + "Music band's name: " + whcr + name + ",\n"
+			+ prcr + "Music band's coordinates: " + whcr + coordinates + ",\n"
 			+ prcr + "Creation Date: " + whcr + creationDate.format(DateTimeFormatter.ofPattern("dd.MM.yyyy")) + ",\n"
 			+ prcr + "Number of Participants: " + whcr + numberOfParticipants + ",\n"
 			+ prcr + "Singles Count: " + whcr + singlesCount + ",\n"
