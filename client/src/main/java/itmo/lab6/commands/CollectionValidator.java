@@ -50,5 +50,6 @@ public final class CollectionValidator {
         }
         return true;
     }
+
 }
 
