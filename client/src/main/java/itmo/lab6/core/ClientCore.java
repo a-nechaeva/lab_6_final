@@ -1,8 +1,9 @@
 package itmo.lab6.core;
 
+
 import itmo.lab6.basic.utils.serializer.CommandSerializer;
-import itmo.lab6.basic.utils.types.SubArrayIterator;
 import itmo.lab6.commands.*;
+import itmo.lab6.connection.Authenticator;
 import itmo.lab6.connection.Connector;
 
 import java.net.InetAddress;
@@ -10,9 +11,13 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
+import static itmo.lab6.commands.CollectionValidator.getCollectionSize;
 
 public class ClientCore {
     private final Connector connector;
+    private final int chunkSize = 20;
+
+    private String name = null;
 
     public ClientCore(InetAddress address, int port) {
         try {
@@ -27,32 +32,41 @@ public class ClientCore {
     public void run() {
         Scanner scanner = new Scanner(System.in);
         String[] userInput;
+
+        try {
+            CommandFactory.setName(this.name = Authenticator.authorize(scanner, connector));
+        } catch (Exception e) {
+            System.err.println("Unable to authorize: " + e.getMessage());
+            return;
+        }
+
         while (true) {
             System.out.print("Enter command: ");
             userInput = scanner.nextLine().split(" ");
             if (userInput.length < 1) continue;
             String[] args = Arrays.copyOfRange(userInput, 1, userInput.length);
             CommandType commandType = CommandUtils.getCommandType(userInput[0]);
-            Command command = CommandFactory.createCommand(commandType, args);
-            if (command == null) continue;
+            Request request = new Request(CommandFactory.createCommand(commandType, args));
+
+            if (request.getCommand() == null) continue;
             try {
-                connector.send(CommandSerializer.serialize(command));
+                connector.send(CommandSerializer.serialize(request));
                 String response = connector.receive();
 
                 if (List.of(CommandType.SHOW, CommandType.PRINT_ASCENDING, CommandType.PRINT_DESCENDING).contains(commandType)) {
-                    System.out.print("\033[H\033[2J");
-                    System.out.flush();
-                    String[] movies = response.split("\\.\n");
-                    SubArrayIterator<String> iterator = new SubArrayIterator<>(movies, 20);
-                    while (iterator.hasNext()) {
-                        for (String movie : List.of(iterator.next())) {
-                            System.out.println(movie + (iterator.hasNext() ? "." : ""));
-                        }
-                        if (iterator.hasNext()) {
-                            System.out.println("Press enter to continue, Press q to stop");
-                            String ans = scanner.nextLine();
-                            if (ans.equals("q")) break;
-                        }
+                    int collectionSize = getCollectionSize();
+                    if (collectionSize == 0) {
+                        System.out.println(response);
+                        continue;
+                    }
+
+                    for (int i = 0; i * chunkSize < collectionSize; i++) {
+                        System.out.println(response);
+                        if (i * chunkSize + chunkSize >= collectionSize) break;
+                        System.out.print("Do you want to continue? (y/n): ");
+                        if (!scanner.nextLine().equalsIgnoreCase("y")) break;
+                        connector.send(CommandSerializer.serialize(new Request(new Command(CommandType.SHOW, chunkSize * (i + 1)), name)));
+                        response = connector.receive();
                     }
                     continue;
                 }
@@ -61,6 +75,7 @@ public class ClientCore {
             } catch (Exception e) {
                 System.err.println("Unable to send/receive request/response to/from the server: " + e.getMessage());
             }
+
         }
     }
 }

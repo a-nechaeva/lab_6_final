@@ -1,13 +1,17 @@
 package itmo.lab6.connection;
 
 import itmo.lab6.basic.utils.terminal.Colors;
+import itmo.lab6.chuncks.ChuckReceiver;
+import itmo.lab6.chuncks.Chuncker;
+//import itmo.chunker.Chunker;
 
-import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.InetAddress;
 import java.net.SocketException;
+import java.nio.charset.StandardCharsets;
+import java.util.Arrays;
 
 /**
  * Connector is used to connect to a remote server
@@ -65,25 +69,23 @@ public class Connector {
     /**
      * Sends bytes to remote server
      *
-     * @param bytes bytes to send
+     * @param dataBytes bytes to send
      * @throws Exception sending exceptions
      */
-    public void send(byte[] bytes) throws Exception {
-        int numChunks = (int) Math.ceil((double) bytes.length / chunkSize);
-        for (int i = 0; i < numChunks; i++) {
-            int offset = i * chunkSize;
-            int length = Math.min(bytes.length - offset, chunkSize);
-            byte[] chunk = new byte[length + 1];
-            chunk[length] = (numChunks == 1 || i + 1 == numChunks) ? (byte) 0 : (byte) 1; // has next flag
-            System.arraycopy(bytes, offset, chunk, 0, length);
-            DatagramPacket datagramPacket = new DatagramPacket(chunk, length + 1, this.address, port);
-            socket.send(datagramPacket);
-            if (i != 0 && i % 50 == 0) {
-                System.out.printf("%sSending chunks:%s %d/%d kb\r", Colors.AsciiPurple, Colors.AsciiReset, i + 1, numChunks);
+    public void send(byte[] dataBytes) throws Exception {
+        Chuncker dataChunker = new Chuncker(dataBytes, chunkSize);
+        var chunkIterator = dataChunker.newIterator();
+        short totalChunks = (short) ((int) Math.ceil((double) dataBytes.length / (double) this.chunkSize));
+        int c = 0;
+        while (chunkIterator.hasNext()) {
+            if (++c % 50 == 0) {
+                System.out.printf("%sSending chunks:%s %d/%d kb\r", Colors.AsciiPurple, Colors.AsciiReset, c, totalChunks);
                 Thread.sleep(100);
             }
+            byte[] chunk = chunkIterator.next();
+            DatagramPacket dataPacket = new DatagramPacket(chunk, chunk.length, this.address, port);
+            socket.send(dataPacket);
         }
-        System.out.print("");
     }
 
     /**
@@ -93,17 +95,20 @@ public class Connector {
      * @throws IOException Receiving exception
      */
     public String receive() throws IOException {
-        ByteArrayOutputStream bos = new ByteArrayOutputStream();
-        byte[] buffer = new byte[chunkSize + 1];
+        ChuckReceiver receiver = new ChuckReceiver();
+        byte[] buffer = new byte[chunkSize + 4];
         DatagramPacket packet = new DatagramPacket(buffer, buffer.length);
-        socket.receive(packet);
-        boolean hasNext = (packet.getData()[packet.getLength() - 1] & 0xFF) == 1; // last byte is a flag
-        bos.write(packet.getData(), 0, packet.getLength() - 1);
-        while (hasNext) {
-            socket.receive(packet);
-            hasNext = (packet.getData()[packet.getLength() - 1] & 0xFF) == 1;
-            bos.write(packet.getData(), 0, packet.getLength() - 1);
-        }
-        return bos.toString();
+        System.out.print(" ".repeat(3) + "\r");
+        System.out.print(Colors.AsciiPurple + "Receiving..." + Colors.AsciiReset);
+        do {
+            try {
+                socket.receive(packet);
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+            receiver.add(Arrays.copyOf(packet.getData(), packet.getLength()));
+        } while (!receiver.isReceived());
+        System.out.print("\r");
+        return new String(receiver.getAllChunks(), StandardCharsets.UTF_8);
     }
 }

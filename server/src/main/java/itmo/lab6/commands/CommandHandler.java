@@ -1,52 +1,66 @@
 package itmo.lab6.commands;
 
-import itmo.lab6.ServerMain;
-import itmo.lab6.server.ClientAddress;
+import itmo.lab6.chuncks.*;
 import itmo.lab6.server.ServerLogger;
-import itmo.lab6.xml.Xml;
+import itmo.lab6.server.UdpServer;
+import itmo.lab6.utils.serializer.Serializer;
 
-import java.io.ByteArrayInputStream;
-import java.io.File;
-import java.io.ObjectInputStream;
 import java.net.InetSocketAddress;
 import java.nio.ByteBuffer;
 import java.nio.channels.DatagramChannel;
 import java.util.logging.Level;
 
-import static itmo.lab6.server.UdpServer.collection;
-import static itmo.lab6.server.UdpServer.commandHistory;
+import static itmo.lab6.utils.CollectionValidator.isValidHistoryInput;
 
 public class CommandHandler {
     private static DatagramChannel channel;
+    private static final int chunkSize = 1024;
 
     public static void setChannel(DatagramChannel channel) {
         CommandHandler.channel = channel;
     }
 
+    /**
+     * Handles a packet received from a client.
+     *
+     * @param sender The address of the sender
+     * @param bytes  The bytes of the packet
+     * @throws Exception If an error occurs while handling the packet
+     */
     public static void handlePacket(InetSocketAddress sender, byte[] bytes) throws Exception {
-        ObjectInputStream objectInputStream2 = new ObjectInputStream(new ByteArrayInputStream(bytes));
-        Command command = (Command) objectInputStream2.readObject();
+        Request request = (Request) Serializer.deserialize(bytes);
+        if (request == null) {
+            channel.send(ByteBuffer.wrap("Unable to get request.".getBytes()), sender);
+            return;
+        }
+        if (!request.isUserAuthorized() && request.getCommand().getCommandType() != CommandType.SERVICE) {
+            channel.send(ByteBuffer.wrap("You are not authorized to use this command.".getBytes()), sender);
+            return;
+        }
 
-        ServerLogger.getLogger().log(Level.INFO, "Received command %s from %s".formatted(command.getCommandType(), sender));
-        byte[] output = command.execute().getMessage().getBytes();
-        int chunkSize = 1024; // 1Kb
-        // Chunking data
-        int numChunks = (int) Math.ceil((double) output.length / chunkSize);
-        ServerLogger.getLogger().log(Level.INFO, "Sending %d chunks to %s".formatted(numChunks, sender));
-        if (numChunks == 0) numChunks = 1;
-        for (int i = 0; i < numChunks; i++) {
-            int offset = i * chunkSize;
-            int length = Math.min(output.length - offset, chunkSize);
-            byte[] chunk = new byte[length + 1];
-            chunk[length] = (numChunks == 1 || i + 1 == numChunks) ? (byte) 0 : (byte) 1; // has next flag
-            System.arraycopy(output, offset, chunk, 0, length);
+        // Log the command type and sender
+        ServerLogger.getLogger().log(Level.INFO, "Received command %s from %s".formatted(request.getCommand().getCommandType(), request.getUserName()));
+
+        // Get the output message from the command
+        byte[] output = request.getCommand().execute(request.getUserName()).getMessage().getBytes();
+        // Create a Chunker object with the output message and the chunk size
+        Chuncker chunker = new Chuncker(output, chunkSize);
+        // Create an iterator for the chunks
+        var chunkIterator = chunker.newIterator();
+        int c = 0;
+        // Iterate through the chunks
+        while (chunkIterator.hasNext()) {
+            // Get the next chunk
+            byte[] chunk = chunkIterator.next();
+            if (++c % 50 == 0) {
+                Thread.sleep(100);
+            }
+            // Send the chunk to the sender
             channel.send(ByteBuffer.wrap(chunk), sender);
         }
 
-        if (!command.getCommandType().equals(CommandType.SERVICE)) {
-            commandHistory.get(new ClientAddress(sender.getAddress(), sender.getPort())).push(command.getCommandType().toString());
+        if (isValidHistoryInput(request.getCommand())) {
+            UdpServer.getDatabase().addCommandToHistory(request.getUserName(), request.getCommand().getCommandType().name());
         }
-
-        new Xml(new File(ServerMain.collectionFileName), true).newWriter().writeCollection(collection);
     }
 }

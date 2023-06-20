@@ -24,6 +24,9 @@ public final class Command implements Serializable {
     public CommandType getCommandType() {
         return commandType;
     }
+    public Object[] getArguments() {
+        return arguments;
+    }
 
     public void setArguments(Object... arguments) {
         this.arguments = arguments;
@@ -32,7 +35,7 @@ public final class Command implements Serializable {
     /**
      * В этом методе вызывается конструктор у нужной нам команды. Затем она исполняется.
      */
-    public Response execute() {
+    public Response execute(String username) {
         try {
             Class<?> executableClass = commandType.getExecutableClass();
             Constructor<?> constructor;
@@ -49,7 +52,7 @@ public final class Command implements Serializable {
                 constructor = executableClass.getDeclaredConstructor(argumentsTypes);
                 instance = constructor.newInstance(arguments);
             }
-            return ((Action) instance).run();
+            return ((Action) instance).run(username);
         } catch (InstantiationException | IllegalAccessException | InvocationTargetException |
                  NoSuchMethodException e) {
             ServerLogger.getLogger().warning("Unable to execute command: " + e);
@@ -57,3 +60,4 @@ public final class Command implements Serializable {
         }
     }
 }
+

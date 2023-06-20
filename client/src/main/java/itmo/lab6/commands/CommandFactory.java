@@ -10,7 +10,6 @@ import itmo.lab6.basic.utils.parser.exceptions.ObjectParsingException;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashSet;
 import java.util.Objects;
 
 import static itmo.lab6.commands.CollectionValidator.isMovieValid;
@@ -19,7 +18,7 @@ import static itmo.lab6.commands.CollectionValidator.isMovieValid;
  * This class is used to create new instances of {@link Command}
  */
 public final class CommandFactory {
-    private static HashSet<CommandType> commandsHistory = new HashSet<>();
+    private static String name = null;
 
     /**
      * Returns new command instance {@link Command}
@@ -29,7 +28,6 @@ public final class CommandFactory {
      * @return command instance (can be null)
      */
     public static Command createCommand(CommandType type, String[] args) {
-        if (!type.equals(CommandType.DEFAULT)) commandsHistory.add(type);
         return switch (type) {
             case EXIT -> {
                 System.out.println("Shutting down...");
@@ -49,12 +47,18 @@ public final class CommandFactory {
                 ArrayList<Command> commands = new ScriptExecutor(new File(filePath)).readScript().getCommandList();
                 yield new Command(type, commands);
             }
-            case HELP, PRINT_ASCENDING, PRINT_DESCENDING, INFO, SHOW, CLEAR -> new Command(type);
-            case HISTORY -> {
-                System.out.println(commandsHistory.stream().map(CommandType::name).reduce((s1, s2) -> s1 + "\n" + s2).orElse("No commands were executed."));
-                yield null;
+            case HELP, PRINT_ASCENDING, PRINT_DESCENDING, INFO, SHOW, CLEAR ->{
+                if (args.length == 0) {
+                    yield new Command(type);
+                }
+                try {
+                    yield new Command(type, Boolean.parseBoolean(args[0]));
+                } catch (Exception e) {
+                    yield new Command(type, Integer.parseInt(args[0]));
+                }
             }
-            case REMOVE_GREATER, REMOVE_KEY, REMOVE_LOWER -> {
+            case HISTORY -> new Command(CommandType.HISTORY, name);
+            case REMOVE_GREATER, REMOVE_KEY -> {
                 if (args.length < 1) {
                     System.err.println("Not enough arguments for command " + type.name());
                     yield null;
@@ -66,7 +70,6 @@ public final class CommandFactory {
                     yield null;
                 }
             }
-
             case INSERT, UPDATE -> {
                 MusicBand musicBand = null;
                 if (args.length == 1) {
@@ -77,7 +80,6 @@ public final class CommandFactory {
                 if (musicBand != null) yield new Command(type, musicBand);
                 yield null;
             }
-            // DEFAULT command
             default -> {
                 System.err.println("Unknown command.");
                 yield null;
@@ -93,11 +95,15 @@ public final class CommandFactory {
      * @return read movie from console
      */
     public static MusicBand parseMovie(CommandType type, String[] args) {
-        if (Boolean.FALSE.equals(isMovieValid(type, args))) return null;
+        if (Boolean.FALSE.equals(isMovieValid(type, name, args))) return null;
 
         MusicBand musicBand = new UserInputParser().readObject(MusicBand.class);
         Objects.requireNonNull(musicBand).setId(Long.parseLong(args[0]));
         return musicBand;
+    }
+
+    public static void setName(String name) {
+        CommandFactory.name = name;
     }
 
     /**
@@ -108,14 +114,17 @@ public final class CommandFactory {
      * @return read movie from file
      */
     public static MusicBand parseMovie(CommandType type, String[] args, String[] movieArgs) {
-        // if (Boolean.FALSE.equals(isMovieValid(type, args))) return null;
-        MusicBand movie = null;
+        MusicBand musicBand = null;
         try {
-            movie = new ArgumentParser(movieArgs).readObject(MusicBand.class);
-            Objects.requireNonNull(movie).setId(Long.parseLong(args[0]));
+            musicBand = new ArgumentParser(movieArgs).readObject(MusicBand.class);
+            Objects.requireNonNull(musicBand).setId(Long.parseLong(args[0]));
         } catch (ObjectParsingException e) {
             System.err.println("Error parsing: " + e.getMessage());
         }
-        return movie;
+        return musicBand;
+    }
+
+    public static String getName() {
+        return name;
     }
 }

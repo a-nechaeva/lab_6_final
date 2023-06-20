@@ -1,4 +1,4 @@
-package itmo.lab6.utils;
+package itmo.lab6.utils.types;
 
 import java.util.Stack;
 
