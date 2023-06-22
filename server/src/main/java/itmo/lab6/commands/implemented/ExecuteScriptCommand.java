@@ -11,15 +11,30 @@ public final class ExecuteScriptCommand implements Action {
 
     private final ArrayList<Command> commandQueue;
 
+    /**
+     * Constructor for ExecuteScriptCommand
+     *
+     * @param commandQueue The queue of commands to be executed
+     */
     public ExecuteScriptCommand(ArrayList<Command> commandQueue) {
         this.commandQueue = commandQueue;
     }
 
+    /**
+     * Executes all commands in the command queue.
+     *
+     * @return A {@link Response} object containing the output of all commands in the command queue,
+     * or an error message if the command queue is empty.
+     */
     @Override
-    public Response run() {
-        if (commandQueue.size() == 0) return new Response("The command queue is empty", ResponseType.ERROR);
+    public Response run(String username) {
+        if (commandQueue.isEmpty()) {
+            return new Response("The command queue is empty", ResponseType.ERROR);
+        }
         StringBuilder output = new StringBuilder();
-        commandQueue.forEach(command -> output.append(command.execute().getMessage()).append("\n"));
-        return new Response(output.substring(0, output.length() - 1), ResponseType.SUCCESS);
+        for (Command command : commandQueue) {
+            output.append(command.execute(username).getMessage()).append("\n");
+        }
+        return new Response(output.toString().trim(), ResponseType.INFO);
     }
 }

@@ -35,7 +35,7 @@ public class ServerMain {
             serverPort = Integer.parseInt(config.get("server_port"));
         } catch (NumberFormatException e) {
             // Setting up the default port
-            serverPort = 5050;
+            serverPort = 1611;
         }
         url = config.get("db_url");
         user = config.get("user");

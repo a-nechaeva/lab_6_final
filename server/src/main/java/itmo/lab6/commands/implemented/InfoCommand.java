@@ -9,7 +9,7 @@ import itmo.lab6.server.response.ResponseType;
 public final class InfoCommand implements Action {
 
     @Override
-    public Response run() {
+    public Response run(String username) {
         return new Response(MessagePainter.ColoredInfoMessage(UdpServer.collection.info()), ResponseType.INFO);
     }
 }

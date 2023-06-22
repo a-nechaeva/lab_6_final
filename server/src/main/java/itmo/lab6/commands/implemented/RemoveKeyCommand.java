@@ -13,8 +13,9 @@ public final class RemoveKeyCommand implements Action {
     }
 
     @Override
-    public Response run() {
+    public Response run(String username) {
         if (UdpServer.collection.removeByKey(key)) {
+            UdpServer.getDatabase().removeByKey(key, username);
             return new Response("Music band with key %d deleted successfully".formatted(key), ResponseType.SUCCESS);
         }
         return new Response("It is impossible to delete a music band with key=%d, because band with this key doesn't exist.".formatted(key), ResponseType.ERROR);

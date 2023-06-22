@@ -400,5 +400,24 @@ public class Database {
         }
         return null;
     }
+
+    public boolean removeLower(Integer key, String username) {
+        try {
+            String sql = "SELECT id FROM \"collection\" WHERE editor = ?";
+            PreparedStatement pre = connection.prepareStatement(sql);
+            pre.setString(1, username);
+            ResultSet resultSet = pre.executeQuery();
+            for (int id = 0; resultSet.next(); id = resultSet.getInt(1)) {
+                MusicBand musicBand = getMovieById(username, id);
+                if (musicBand != null && musicBand.getSinglesCount() < key)
+                    removeByKey(musicBand.getId(), username);
+            }
+            return true;
+        } catch (SQLException e) {
+            // Log any errors that occur
+            ServerLogger.getLogger().log(Level.INFO, "Unable to remove lower " + e.getMessage());
+        }
+        return false;
+    }
 }
 

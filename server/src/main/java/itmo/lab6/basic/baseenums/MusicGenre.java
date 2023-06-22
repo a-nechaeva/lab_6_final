@@ -3,10 +3,8 @@ package itmo.lab6.basic.baseenums;
 import java.io.Serializable;
 
 /**
- * The enum {@code MovieGenre} lists all the possible movie genres.
+ * The enum {@code MusicGenre} lists all the possible music genres.
  *
- * @author dorlneylon
- * @since ??.??.????
  */
 public enum MusicGenre implements Serializable {
     RAP,

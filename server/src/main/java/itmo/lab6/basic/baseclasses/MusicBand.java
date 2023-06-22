@@ -2,6 +2,8 @@ package itmo.lab6.basic.baseclasses;
 
 import itmo.lab6.basic.baseclasses.builders.annotations.Generated;
 import itmo.lab6.basic.baseenums.MusicGenre;
+import itmo.lab6.server.UdpServer;
+import itmo.lab6.server.response.Color;
 
 import java.io.Serial;
 import java.io.Serializable;
@@ -305,6 +307,17 @@ public class MusicBand implements Comparable<MusicBand>, Serializable {
                 + "Number of Participants: " + numberOfParticipants + ",\n"
                 + "Singles Count: " + singlesCount + ",\n"
        + "Establishment Date: " + establishmentDate + ",\n"
+                + "Genre: " + genre + ",\n"
+                + studio.toString();
+    }
+    public String toString(String username) {
+        return id + ". " + (UdpServer.getDatabase().isUserEditor(username, Math.toIntExact(id)) ? Color.GREEN + "[modifiable]" + Color.RESET : "") + "\n"
+                + "Music band's name: " + name + ",\n"
+                + "Music band's coordinates: " + coordinates + ",\n"
+                + "Creation Date: " + creationDate.format(DateTimeFormatter.ofPattern("dd.MM.yyyy")) + ",\n"
+                + "Number of Participants: " + numberOfParticipants + ",\n"
+                + "Singles Count: " + singlesCount + ",\n"
+                + "Establishment Date: " + establishmentDate + ",\n"
                 + "Genre: " + genre + ",\n"
                 + studio.toString();
     }

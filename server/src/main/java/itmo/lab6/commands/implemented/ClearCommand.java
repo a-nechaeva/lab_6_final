@@ -7,8 +7,9 @@ import itmo.lab6.server.response.ResponseType;
 
 public final class ClearCommand implements Action {
     @Override
-    public Response run() {
-        UdpServer.collection.clear();
+    public Response run(String username) {
+        UdpServer.collection.clear(username);
+        UdpServer.getDatabase().clearCollection(username);
         return new Response("Collection cleaned successfully", ResponseType.SUCCESS);
     }
 }

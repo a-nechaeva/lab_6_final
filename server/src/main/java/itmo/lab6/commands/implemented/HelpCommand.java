@@ -11,7 +11,7 @@ import java.util.stream.Collectors;
 
 public final class HelpCommand implements Action {
     @Override
-    public Response run() {
+    public Response run(String username) {
         return new Response(MessagePainter.ColoredInfoMessage(Arrays.stream(CommandType.values()).
                 map(CommandType::getDescription).
                 filter(description -> !description.isEmpty()).

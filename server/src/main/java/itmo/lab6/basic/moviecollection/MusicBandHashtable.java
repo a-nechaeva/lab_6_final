@@ -152,7 +152,7 @@ public abstract class MusicBandHashtable<K, V> {
     /**
      * clear the map
      */
-    public void clear() {
+    public void clear(String username) {
         this.map.clear();
     }
 
