@@ -9,7 +9,7 @@ public class Encryptor {
 
     static {
         try {
-            messageDigest = MessageDigest.getInstance("SHA-256");
+            messageDigest = MessageDigest.getInstance("SHA-224");
         } catch (NoSuchAlgorithmException e) {
             throw new RuntimeException(e);
         }

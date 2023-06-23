@@ -4,11 +4,7 @@ import itmo.lab6.basic.moviecollection.MovieCollection;
 import itmo.lab6.database.Database;
 import itmo.lab6.server.UdpServer;
 import itmo.lab6.utils.config.Config;
-import itmo.lab6.xml.Xml;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.sql.SQLException;
 
 
@@ -25,8 +21,8 @@ public class ServerMain {
 
     static {
         Config config = null;
-        //config = new Config("server.scfg");
-        config = new Config("C:\\Users\\user\\OneDrive\\Рабочий стол\\renew\\prog-6-develop\\server\\server.scfg");
+        //config = new Config("server_hel.scfg");
+        config = new Config("C:\\Users\\user\\OneDrive\\Рабочий стол\\renew\\prog-6-develop\\server\\server_loc.scfg");
         collectionFileName = config.get("collection_file");
         if (collectionFileName == null) {
             // Setting up the default file name

@@ -51,7 +51,8 @@ public class UdpServer {
     private static final Map<InetSocketAddress, ChuckReceiver> chunkLists = new HashMap<>();
 
     //Declare an ExecutorService object
-    private final ExecutorService executorService = Executors.newCachedThreadPool();
+    //private final ExecutorService executorService = Executors.newCachedThreadPool();
+    private final ExecutorService executorService = Executors.newFixedThreadPool(4);
 
     /**
      * Constructor for the UdpServer class.
