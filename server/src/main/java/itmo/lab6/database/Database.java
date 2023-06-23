@@ -31,7 +31,8 @@ public class Database {
         try {
             connectionTry = DriverManager.getConnection(url, user, password);
         } catch (SQLException e) {
-            throw new SQLException("Unable to connect to database: ", e);
+            e.printStackTrace();
+            throw new SQLException("Unable to connect to database: ", e.getMessage());
         }
         if (connectionTry == null) throw new SQLException("Unable to connect to database.");
         this.connection = connectionTry;

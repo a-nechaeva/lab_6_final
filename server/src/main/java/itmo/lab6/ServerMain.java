@@ -25,7 +25,8 @@ public class ServerMain {
 
     static {
         Config config = null;
-        config = new Config("server.scfg");
+        //config = new Config("server.scfg");
+        config = new Config("C:\\Users\\user\\OneDrive\\Рабочий стол\\renew\\prog-6-develop\\server\\server.scfg");
         collectionFileName = config.get("collection_file");
         if (collectionFileName == null) {
             // Setting up the default file name

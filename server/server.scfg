@@ -4,5 +4,5 @@ server_port=1611
 collection_file=server1.xml
 ;database
 db_url=jdbc:postgresql://localhost:5432/postgres
-user=s312298
-password=BQRR=6217
+user=postgres
+password=Kl8A7c
