@@ -22,11 +22,10 @@ import static itmo.lab6.commands.CommandHandler.setChannel;
 
 /**
  * UdpServer class is responsible for handling the UDP connections.
- * It contains a static MovieCollection object, a static HashMap object to store the command history of each client,
+ * It contains a static Collection object, a static HashMap object to store the command history of each client,
  * an integer to store the port number, a DatagramChannel object, a Selector object, a static Map object to store the chunk lists of each client,
  * and an ExecutorService object.
  *
- * @author kxrxh
  */
 public class UdpServer {
     //Declare a static MovieCollection object
@@ -51,14 +50,13 @@ public class UdpServer {
     private static final Map<InetSocketAddress, ChuckReceiver> chunkLists = new HashMap<>();
 
     //Declare an ExecutorService object
-    //private final ExecutorService executorService = Executors.newCachedThreadPool();
     private final ExecutorService executorService = Executors.newFixedThreadPool(4);
 
     /**
      * Constructor for the UdpServer class.
      *
      * @param database   The database to be used by the server.
-     * @param collection The collection of movies to be used by the server.
+     * @param collection The collection of bands to be used by the server.
      * @param port       The port to be used by the server.
      */
     public UdpServer(Database database, MovieCollection collection, int port) {

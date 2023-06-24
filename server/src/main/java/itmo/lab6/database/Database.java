@@ -2,14 +2,11 @@ package itmo.lab6.database;
 
 
 import itmo.lab6.basic.baseclasses.MusicBand;
-//import itmo.lab6.basic.baseenums.MpaaRating;
 import itmo.lab6.basic.moviecollection.MovieCollection;
 import itmo.lab6.server.ServerLogger;
 import itmo.lab6.utils.serializer.Serializer;
 import java.sql.*;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.logging.Level;
 
 /**

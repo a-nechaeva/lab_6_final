@@ -3,7 +3,6 @@ package itmo.lab6.connection;
 import itmo.lab6.basic.utils.terminal.Colors;
 import itmo.lab6.chuncks.ChuckReceiver;
 import itmo.lab6.chuncks.Chuncker;
-//import itmo.chunker.Chunker;
 
 import java.io.IOException;
 import java.net.DatagramPacket;

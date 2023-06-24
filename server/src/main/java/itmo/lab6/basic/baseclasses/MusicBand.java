@@ -20,6 +20,7 @@ public class MusicBand implements Comparable<MusicBand>, Serializable {
     @Generated
     private static final long serialVersionUID = 6529685098267757690L;
 
+
     @Generated
     private static Long nextId = 1L;
 
@@ -27,6 +28,7 @@ public class MusicBand implements Comparable<MusicBand>, Serializable {
      * The unique ID of the music band.
      * Generates automatically, can't be null, greater than zero.
      */
+
     private Long id;
 
     /**
@@ -311,7 +313,7 @@ public class MusicBand implements Comparable<MusicBand>, Serializable {
                 + studio.toString();
     }
     public String toString(String username) {
-        return id + ". " + (UdpServer.getDatabase().isUserEditor(username, Math.toIntExact(id)) ? Color.GREEN + "[modifiable]" + Color.RESET : "") + "\n"
+        return id + ". " + (UdpServer.getDatabase().isUserEditor(username, Math.toIntExact(id)) ? Color.GREEN + " this one is yours" + Color.RESET : "") + "\n"
                 + "Music band's name: " + name + ",\n"
                 + "Music band's coordinates: " + coordinates + ",\n"
                 + "Creation Date: " + creationDate.format(DateTimeFormatter.ofPattern("dd.MM.yyyy")) + ",\n"
